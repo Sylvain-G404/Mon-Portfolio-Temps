@@ -185,12 +185,11 @@ hr {
 @media (max-width: 600px) {
 
     .paragraphe {
-        font-size: 10px;
-        background-color: red;
+        font-size: 0.7rem;
     }
 
     .titre-plume {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 
     .image-projet {
