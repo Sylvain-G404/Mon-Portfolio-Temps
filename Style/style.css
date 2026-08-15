@@ -186,10 +186,11 @@ hr {
 
     .paragraphe {
         font-size: 10px;
+        background-color: red;
     }
 
     .titre-plume {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .image-projet {
