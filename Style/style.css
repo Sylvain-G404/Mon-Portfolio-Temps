@@ -196,3 +196,94 @@ hr {
         width: 100%;
     }
 }
+
+
+.image-toggle {
+    display: none;
+}
+
+.image-toggle + label {
+    display: block;
+    cursor: zoom-in;
+}
+
+.image-toggle:checked + label {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    cursor: zoom-out;
+}
+
+.image-toggle:checked + label .image-projet {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+
+    object-fit: contain;
+
+    margin: 0;
+}
+
+
+.image-toggle:checked + label .image-projet {
+    animation: zoomImage 0.25s ease;
+}
+
+@keyframes zoomImage {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .image-toggle {
+        display: none;
+    }
+
+    .image-toggle + label {
+        display: block;
+        cursor: zoom-in;
+    }
+
+    .image-toggle:checked + label {
+        position: fixed;
+        inset: 0;
+
+        z-index: 1000;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px;
+
+        background: rgba(0, 0, 0, 0.9);
+
+        cursor: zoom-out;
+    }
+
+    .image-toggle:checked + label .image-projet {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+
+        object-fit: contain;
+
+        margin: 0;
+    }
+}
