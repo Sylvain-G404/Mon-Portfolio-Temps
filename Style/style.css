@@ -1,17 +1,3 @@
-@media (max-width: 600px) {
-  .paragraphe {
-    font-size: 10px;
-  }
-
-  .titre-plume {
-    font-size: 12px;
-  }
-
-  .image-projet {
-    width: 100%;
-  }
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -188,4 +174,25 @@ hr {
 .lien-projet:hover {
   background-color: #444;
   transform: scale(1.05);
+}
+
+/* 
+    =========================
+            MOBILE
+    =========================
+*/
+
+@media (max-width: 600px) {
+
+    .paragraphe {
+        font-size: 10px;
+    }
+
+    .titre-plume {
+        font-size: 20px;
+    }
+
+    .image-projet {
+        width: 100%;
+    }
 }
