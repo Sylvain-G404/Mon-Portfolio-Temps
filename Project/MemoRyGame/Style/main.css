@@ -9,7 +9,8 @@ html, body {
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background-color: midnightblue;
 }
 
@@ -58,6 +59,7 @@ h1 {
 }
 
 .retour-portfolio {
+    margin: 5px;
     padding: 5px 10px;
 }
 
