@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background-color: midnightblue;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-decoration: underline 2px red;
+    margin-top: 5px;
+}
+
+#soundToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#soundToggle.off {
+    opacity: 0.5;
+}
+
+#HUD {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    color: white;
+    font-size: 20px;
+}
+

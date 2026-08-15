@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #ffffff;
+}
+
+/* centage */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* titres */
+h1 {
+    text-align: center;
+    color: #00ffcc;
+}
+
+h2 {
+    margin-top: 20px;
+    text-decoration: underline;
+    text-decoration-color: #00ffcc;
+}
+
+/* sections */
+.section {
+    margin-top: 20px;
+    padding: 10px;
+    background: #2a2a2a;
+    border-radius: 8px;
+}
+
+/* inputs */
+input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border-radius: 5px;
+    border-style: none;
+    background: #3b3b3b;
+    color: #ffffff;
+}
+
+/* button */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #00ffcc;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* hover */
+button:hover {
+    background: #00ccaa;
+}
+
+/* résultat */
+p {
+    margin: 5px;
+}

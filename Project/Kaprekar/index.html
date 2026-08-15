@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../Assets/Favicon/Favicon.K.sf.png"
+    />
+    <link rel="stylesheet" href="Style/main.css" />
+    <title>Kaprekar</title>
+  </head>
+  <body>
+    <h1>Algorithme de Kaprekar</h1>
+    <div class="content">
+      <fieldset id="Style_Rsultat">
+        <legend>Exemple : Pour un nombre à 4 chiffres (1423)</legend>
+        <ol>
+          <li>On trie les chiffres dans l'ordre décroissant : 4321</li>
+          <li>On trie les chiffres dans l'ordre croissant : 1234</li>
+          <li>On soustrait le plus petit du plus grand : 4321 - 1234 = 3087</li>
+          <li>On répète jusqu’à obtenir 6174</li>
+        </ol>
+      </fieldset>
+      <fieldset id="Style_Rsultat" class="content-message">
+        <legend>Teste un nombre à 4 chiffres</legend>
+        <input type="text" maxlength="4" value="1928" />
+        <button>TEST</button>
+        <p class="message"></p>
+      </fieldset>
+      <fieldset id="Style_Rsultat" class="reponse">
+        <legend>Retour du test</legend>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre Fort</th>
+              <th>-</th>
+              <th>Nombre Faible</th>
+              <th>=</th>
+              <th>Résultat</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <a href="../../index.html#Kaprekar" class="retour-portfolio">
+                  ← Retour au portfolio
+                </a>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </fieldset>
+    </div>
+    <script src="JavaScript/main.js"></script>
+  </body>
+</html>
+<!-- 
+Copilot: Disable
+Copilot: Enable 
+-->

@@ -1,0 +1,100 @@
+Structure du dossier pour le volume Windows
+Le numéro de série du volume est 3894-ABBE
+C:.\Portfolio
+|   generate_structure.bat
+|   index.html
+|   
++---Assets
+|   +---Favicon
+|   |       Favicon.K.sf.png
+|   |       
+|   +---Icons
+|   \---Image
++---Data
+|       data.json
+|       
++---Infos
+|       structure.txt
+|       structure_temp.txt
+|       
++---JavaScript
+|       main.js
+|       
++---Project
+|   +---collatz_conjecture
+|   |   |   Collatz_Conjecture.txt
+|   |   |   index.html
+|   |   |   README.md
+|   |   |   
+|   |   +---assets
+|   |   +---css
+|   |   |       style.css
+|   |   |       
+|   |   +---ScreenCite
+|   |   |       Screenshot 2026-05-01 at 03-11-32 Jeux Mathématiques.png
+|   |   |       Screenshot 2026-05-01 at 03-11-41 Jeux Mathématiques.png
+|   |   |       
+|   |   \---script
+|   |           script.js
+|   |           
+|   +---Kaprekar
+|   |   |   index.html
+|   |   |   README.md
+|   |   |   
+|   |   +---JavaScript
+|   |   |       main.js
+|   |   |       
+|   |   +---ScreenCite
+|   |   |       Screenshot 2026-05-01 at 02-38-12 Kaprekar.png
+|   |   |       Screenshot 2026-05-01 at 02-39-03 Kaprekar.png
+|   |   |       
+|   |   \---Style
+|   |           main.css
+|   |           
+|   +---MemoRyGame
+|   |   |   index.html
+|   |   |   README.md
+|   |   |   
+|   |   +---Assets
+|   |   +---JavaScript
+|   |   |       class.js
+|   |   |       main.js
+|   |   |       songCarte.js
+|   |   |       
+|   |   +---ScreenCite
+|   |   |       Screenshot 2026-04-29 at 04-24-41 MemoRyGame.png
+|   |   |       Screenshot 2026-04-29 at 04-26-10 MemoRyGame.png
+|   |   |       
+|   |   +---Sounds
+|   |   |       flipcard.mp3
+|   |   |       
+|   |   \---Style
+|   |           carte.css
+|   |           main.css
+|   |           style.css
+|   |           table.css
+|   |           
+|   \---WallCalc
+|       |   index.html
+|       |   
+|       +---assets
+|       |       Screenshot 2026-04-22 at 18-13-43 Calcule M².Style.png
+|       |       Screenshot 2026-04-23 at 01-28-36 Calcule M².Style_v2.png
+|       |       Screenshot 2026-04-23 at 02-15-50 Calcule M².Style_v3.png
+|       |       Screenshot 2026-05-01 at 13-33-40 Calcule M².png
+|       |       
+|       +---css
+|       |       style.css
+|       |       style_v2.css
+|       |       style_v3.css
+|       |       
+|       +---js
+|       |       script.js
+|       |       script_v2.js
+|       |       
+|       \---ScreenCite
+|               Screenshot 2026-08-08 at 11-58-30 Calcule M².png
+|               
+\---Style
+        style.css
+        

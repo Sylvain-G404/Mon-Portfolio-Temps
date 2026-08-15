@@ -1,0 +1,107 @@
+/* reset global */
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+}
+
+/* container principal */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* titre */
+h1 {
+    text-align: center;
+    color: #00ffcc;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* section */
+.section {
+    background: #1e1e1e;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* effet hover sur les section */
+.section:hover {
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
+/* titres sections */
+h2 {
+    margin-top: 0;
+    color: #00ffcc;
+    font-size: 18px;
+}
+
+/* inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: white;
+}
+
+/* boutons */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #00ffcc;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00c9a3;
+}
+
+/* résultats */
+p {
+    margin: 6px 0;
+    color: #ddd;
+}
+
+.retour-portfolio {
+    padding: 5px 10px;
+}
+
+.retour-portfolio {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.retour-portfolio:hover {
+  text-decoration: underline red;
+
+  padding: 5px 10px;
+
+  border-radius: 50px / 40px;
+
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="../../Assets/Favicon/Favicon.K.sf.png">
+    <title>Jeux Mathématiques</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Formule de la Conjecture de Collatz</legend>
+        <p id="formule">
+            $$
+                f(n) =
+                \begin{cases}
+                    n / 2 & \text{si } n \text{ est pair} \\
+                    3n + 1 & \text{si } n \text{ est impair}
+                \end{cases}
+            $$
+        </p>
+        <aside id="info">
+            <p>
+                La conjecture de Collatz, également connue sous le nom de problème 3n + 1, est une conjecture mathématique qui concerne les séquences de nombres entiers. Elle stipule que, pour tout nombre entier positif n, la séquence définie par les règles suivantes finira toujours par atteindre le nombre 1 :
+            </p>
+            <ul>
+                <li>Si n est pair, divisez-le par 2.</li>
+                <li>Si n est impair, multipliez-le par 3 et ajoutez 1.</li>
+            </ul>
+            <p>
+                Par exemple, si vous commencez avec le nombre 6, la séquence serait :<br>
+                <ul>
+                    <li>6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1.</li>
+                </ul>
+                Malgré des efforts considérables de la part des mathématiciens, la conjecture de Collatz reste non prouvée à ce jour.
+            </p>
+        </aside>
+        <label>Entrez un nombre positif :</label><br>
+        <input type="number" id="inputNumber" min="1" value="6" required>
+        <button onclick="generateSequence()">Generate Sequence</button>
+        <table border="1" id="resultTable">
+            <thead>
+                <tr>
+                    <th>n</th>
+                    <th>type</th>
+                    <th>opération</th>
+                    <th>résultat</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <a href="../../index.html#collatz" class="retour-portfolio">
+                            ← Retour à WallCalc
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </fieldset>
+  
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>

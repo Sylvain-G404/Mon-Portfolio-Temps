@@ -1,0 +1,10 @@
+#table {
+    display: grid;
+    grid-template-columns: repeat(13, auto);
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+}

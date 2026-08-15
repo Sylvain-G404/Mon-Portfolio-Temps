@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 300vh;
+    overflow-x: hidden;
+
+    background: #18213D;
+    color: #F8F5EE;
+
+    transition:
+        background-color 0.15s linear,
+        color 0.15s linear;
+}
+
+.scene {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.soleil {
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fff8b0 0%,
+            #ffe066 25%,
+            #ffcc33 55%,
+            #ff9f1c 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 204, 51, 0.65),
+        0 0 70px rgba(255, 180, 40, 0.4),
+        0 0 130px rgba(255, 160, 20, 0.2);
+
+    transform: translateY(-50%);
+}
+
+.contenu {
+    position: relative;
+    z-index: 1;
+
+    width: min(800px, 80%);
+    margin: 0 auto;
+
+    padding-top: 30vh;
+
+    text-align: center;
+}
+
+.contenu h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    margin-bottom: 2rem;
+}
+
+.titre-plume {
+    margin: 50px auto 25px;
+
+    text-align: center;
+
+    font-family:
+        "Courier New",
+        "URW Chancery L",
+        "Brush Script MT",
+        "Segoe Print",
+        cursive;
+
+    font-size: 3rem;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: inherit;
+
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.contenu p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.paragraphe {
+    max-width: 700px;
+    margin: 30px auto;
+
+    padding: 20px 25px;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+
+    text-align: center;
+
+    color: inherit;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 12px;
+}
+
+.image-projet {
+    display: block;
+
+    width: min(700px, 90%);
+    height: auto;
+
+    margin: 30px auto;
+
+    border-radius: 12px;
+
+    object-fit: cover;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.image-projet:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+    width: 80%;
+    height: 3px;
+
+    margin: 60px auto;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #e86a6a;
+
+    opacity: 0.8;
+}
+
+.lien-projet {
+  display: inline-block;
+  margin: 15px 0 30px;
+  padding: 10px 20px;
+
+  color: white;
+  background-color: black;
+
+  text-decoration: none;
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.lien-projet:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}

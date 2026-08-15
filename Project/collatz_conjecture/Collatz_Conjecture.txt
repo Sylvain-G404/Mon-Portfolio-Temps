@@ -1,0 +1,33 @@
+Collatz conjecture
+
+La conjecture de Collatz, aussi appelée problème de 3n+1, est une hypothèse mathématique célèbre en théorie des nombres et en systèmes dynamiques. Énoncée par le mathématicien allemand Lothar Collatz en 1937, elle affirme que l’application répétée d’une simple règle arithmétique ramène tout entier positif vers la boucle 4→2→14→2→1. Malgré sa simplicité, aucune démonstration générale n’a encore été trouvée.
+Faits clés
+
+    Auteur : Lothar Collatz (1937)
+
+    Règle : n↦n/2n↦n/2 si nn est pair ; n↦3n+1n↦3n+1 sinon
+
+    État actuel : Non démontrée, mais vérifiée jusqu’à 2,95×10202,95×1020
+
+    Autres noms : Problème de Syracuse, conjecture d’Ulam, problème de Kakutani
+
+    Domaine : Théorie des nombres, dynamique discrète
+
+Définition et mécanisme
+
+Partant d’un entier positif nn :
+
+    s’il est pair, on le divise par deux ;
+
+    s’il est impair, on le multiplie par trois puis on ajoute un.
+    La conjecture énonce que ce processus finit toujours par atteindre 1. À partir de 1, la suite entre dans le cycle répétitif 1,4,2,11,4,2,1. Ces suites, dites de grêle (hailstone sequences), montent et descendent de façon imprévisible avant de retomber sur 1.
+
+Contexte historique et difficulté
+
+Proposée peu après la thèse de Collatz, l’idée a rapidement intrigué des figures comme Kurt Mahler et Paul Erdős, ce dernier estimant que « les mathématiques ne sont peut-être pas prêtes pour de tels problèmes ». Malgré des milliards de tests informatiques, aucun contre-exemple n’a été trouvé, et aucune preuve n’est acceptée à ce jour.
+Perspectives de recherche
+
+Les approches modernes mobilisent la théorie ergodique, les nombres 2-adiques et la modélisation en systèmes dynamiques ; ces travaux montrent que l’itération se comporte presque comme un processus aléatoire. En 2023-2024, des prépublications (Eduardo Diedrich, Algebraic Inverse Trees) ont proposé des cadres topologiques prétendant démontrer la conjecture, mais aucune validation par la communauté n’a encore été reconnue .
+Importance
+
+La conjecture de Collatz illustre comment des règles élémentaires peuvent engendrer une complexité profonde. Elle reste un symbole de la frontière entre le calcul expérimental et la preuve formelle en mathématiques.
