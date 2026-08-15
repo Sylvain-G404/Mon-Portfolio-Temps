@@ -9,8 +9,6 @@ const Style_Rsultat = document.querySelectorAll("#Style_Rsultat");
 const SEUIL = 6174;         // constante de Kaprekar (objectif final)
 const MAX_ITER = 20;        // while sécurité
 
-const csl = console.log;
-csl(Style_Rsultat);
 btn.addEventListener("click", () => {
 
     tbody.innerHTML = "";

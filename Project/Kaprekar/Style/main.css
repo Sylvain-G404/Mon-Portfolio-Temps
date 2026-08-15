@@ -103,3 +103,11 @@ th, td {
   background-color: white;
   color: black;
 }
+
+
+
+@media (max-width: 600px) {
+    fieldset {
+        width: 100%;
+    }
+}

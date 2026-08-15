@@ -182,6 +182,10 @@ hr {
     =========================
 */
 
+.image-toggle {
+        display: none;
+    }
+
 @media (max-width: 600px) {
 
     .paragraphe {
@@ -200,9 +204,6 @@ hr {
        ZOOM DES IMAGES
        ========================= */
 
-    .image-toggle {
-        display: none;
-    }
 
     .image-toggle + label {
         display: block;
