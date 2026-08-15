@@ -6,5 +6,20 @@
     align-content: center;
     width: fit-content;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+}
+
+@media (max-width: 600px) {
+
+    #table {
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        padding: 20px;
+        gap: 1px;
+    }
+
+    .carte {
+        width: clamp(30px, 20vw, 20px) !important;
+        justify-self: center;
+    }
 }

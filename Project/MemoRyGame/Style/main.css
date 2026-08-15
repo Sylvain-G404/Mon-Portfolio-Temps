@@ -51,3 +51,29 @@ h1 {
     font-size: 20px;
 }
 
+.MemoRyGame {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.retour-portfolio {
+    padding: 5px 10px;
+}
+
+.retour-portfolio {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.retour-portfolio:hover {
+  text-decoration: underline red;
+
+  padding: 5px 10px;
+
+  border-radius: 50px / 40px;
+
+  background-color: white;
+  color: black;
+}

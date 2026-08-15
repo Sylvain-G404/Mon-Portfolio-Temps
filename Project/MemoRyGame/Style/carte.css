@@ -1,7 +1,7 @@
 /* ===============  Style for the playing cards  =============== */
 .carte {
     aspect-ratio: 2 / 3;
-    width: clamp(55px, 6vw, 90px);
+    width: 80px;
     background: transparent;
     position: relative;
     display: flex;
