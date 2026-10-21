@@ -1,0 +1,38 @@
+# ==========================================
+# 🪐 .gitignore Généraliste & Évolutif
+# ==========================================
+
+# --- Vos scripts et outils locaux ---
+generate_structure.bat
+Infos/structure_temp.txt
+
+# --- Rust & Compilation (Tauri / Cargo) ---
+**/target/
+**/gen/
+*.rs.bk
+cargo-lock.json
+
+# --- Node.js / JavaScript (Futurs paquets) ---
+node_modules/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Éditeurs de code & IDE (VS Code, Visual Studio, etc.) ---
+.vscode/
+.idea/
+*.sln
+*.suo
+*.user
+*.userosscmis
+*.sln.docstates
+
+# --- Système d'exploitation (Windows / Mac) ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- EXCEPTION : Dossier de test portable ---
+# On autorise Git à suivre le dossier TEST (8 Mo) pour que les gens testent le .exe
+!TEST/

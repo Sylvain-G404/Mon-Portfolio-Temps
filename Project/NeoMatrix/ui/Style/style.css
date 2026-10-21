@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Empêche les barres de défilement */
+    background-color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Le Canvas prend tout l'espace disponible en arrière-plan */
+#pixelCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1; /* Derrière le HUD */
+}
+
+/* Le HUD (Panneau de contrôle) */
+#hud {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10; /* Devant le canvas */
+    background: rgba(20, 20, 20, 0.6); /* Fond sombre semi-transparent */
+    backdrop-filter: blur(10px); /* Effet flou moderne */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    color: #ffffff;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Classe pour masquer proprement le HUD (animation de glissement/fondu) */
+.visual-hidden {
+    transform: translateX(50px);
+    opacity: 0;
+    pointer-events: none; /* Désactive les clics quand il est masqué */
+}
+
+/* Style pour les listes déroulantes du HUD */
+.slider-container select {
+    width: 100%;
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.slider-container select:focus {
+    border-color: #00ffcc;
+}
+
+/* Layout et positionnement de la zone de sélection */
+.picker-flex-layout {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.swatch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style des carrés individuels de couleur */
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+/* Couleurs initiales par défaut (Rouge, Vert, Bleu) */
+#swatch1 { background-color: #ff0000; }
+#swatch2 { background-color: #00ff00; }
+#swatch3 { background-color: #0000ff; }
+
+/* Effets au survol */
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+/* Style du carré actif sélectionné */
+.color-swatch.active {
+    border-color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    transform: scale(1.1);
+}
+
+/* Alignement propre des lignes de réglages du HUD */
+.slider-container {
+    display: flex;
+    flex-direction: column; /* Organise le contenu du bloc verticalement */
+    gap: 5px;               /* Espace de 5px entre le texte et la barre */
+    margin-bottom: 15px;    /* Espace sous le bloc pour respirer */
+}
+
+/* Force tous les sliders à prendre leur ligne dédiée sur toute la largeur */
+.slider-container input[type="range"] {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
