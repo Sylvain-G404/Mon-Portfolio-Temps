@@ -21,27 +21,27 @@ const evening = {
 const colors = [
     {
         position: 0,
-        background: '#18213D',
+        background: '#10182F',
         text: '#F8F5EE'
     },
     {
         position: 0.25,
-        background: '#E8B86A',
+        background: '#4F86C6',
         text: '#171717'
     },
     {
         position: 0.5,
-        background: '#F5F1E6',
+        background: '#87BCE8',
         text: '#171717'
     },
     {
         position: 0.75,
-        background: '#C96A55',
+        background: '#3F6FAD',
         text: '#F8F5EE'
     },
     {
         position: 1,
-        background: '#101525',
+        background: '#10182F',
         text: '#F8F5EE'
     }
 ];
@@ -87,6 +87,45 @@ function getColor(progress, property) {
     return colors[colors.length - 1][property];
 }
 
+function updateTextColor(progress) {
+
+    if (progress <= 0.1) {
+
+        const localProgress = progress / 0.1;
+
+        const color = interpolateColor(
+            '#F8F5EE',
+            '#171717',
+            localProgress
+        );
+
+        console.log("Texte :", (progress * 100).toFixed(1) + "%", color);
+
+        document.body.style.color = color;
+
+    } else if (progress <= 0.7) {
+
+        console.log("Texte : NOIR", (progress * 100).toFixed(1) + "%");
+
+        document.body.style.color = '#171717';
+
+    } else {
+
+        const localProgress =
+            (progress - 0.7) / 0.3;
+
+        const color = interpolateColor(
+            '#171717',
+            '#F8F5EE',
+            localProgress
+        );
+
+        console.log("Texte :", (progress * 100).toFixed(1) + "%", color);
+
+        document.body.style.color = color;
+    }
+}
+
 function updateSun() {
     const scrollMax =
         document.documentElement.scrollHeight -
@@ -94,6 +133,10 @@ function updateSun() {
 
     const progress =
         window.scrollY / scrollMax;
+
+    console.log(`Scroll : ${(progress * 100).toFixed(1)}%`); // <--------------------
+
+    updateTextColor(progress);
 
     let right;
     let y;

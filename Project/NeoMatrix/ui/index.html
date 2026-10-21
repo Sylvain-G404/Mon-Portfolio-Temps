@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeoMatrix - Dynamic Pixel Wallpaper</title>
+    <!-- Favicon du site -->
+    <link
+      rel="shortcut icon"
+      href="ui/Assets/Favicon/Favicon.K.sf.blanc.png"
+      type="image/x-icon"
+    />
+    <!-- Lien vers ta signature secrète de développeur -->
+    <link rel="author" href="human.txt" />
+
+    <link rel="stylesheet" href="Style/style.css" />
+  </head>
+
+  <body>
+    <!-- Notre Canvas principal qui va occuper 100% de l'écran -->
+    <canvas id="pixelCanvas"></canvas>
+
+    <!-- Le HUD (Panneau de contrôle) qui sera masqué par défaut -->
+    <div id="hud" class="hud-panel visual-hidden">
+      <h2>Configuration NeoMatrix</h2>
+
+      <!-- SECTION 1 : CONTRÔLE DE LA GRILLE -->
+      <div class="control-group">
+        <h3>Structure de la Grille</h3>
+
+        <!-- Curseur Colonnes -->
+        <div class="slider-container">
+          <label for="columnsInput"
+            >Axe des Colonnes : <span id="columnsVal">20</span></label
+          >
+          <input type="range" id="columnsInput" min="1" max="100" value="20" />
+        </div>
+
+        <!-- Curseur Lignes -->
+        <div class="slider-container">
+          <label for="rowsInput"
+            >Axe des Lignes : <span id="rowsVal">20</span></label
+          >
+          <input type="range" id="rowsInput" min="1" max="100" value="15" />
+        </div>
+
+        <!-- Mode Carrés Parfaits -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="perfectSquaresInput" />
+          <label for="perfectSquaresInput">Mode Carrés Parfaits</label>
+        </div>
+      </div>
+
+      <!-- SECTION 2 : SYSTEME DE COULEURS -->
+      <div class="control-group">
+        <h3>Gestion des Couleurs</h3>
+
+        <!-- Choix du Mode de Couleur -->
+        <div class="slider-container">
+          <label for="colorModeSelect">Palette de couleurs :</label>
+          <select id="colorModeSelect">
+            <option value="rainbow">Arc-en-ciel total (Libre)</option>
+            <option value="custom">Sélection personnalisée (Iro.js)</option>
+          </select>
+        </div>
+
+        <!-- Option Fixe vs Flexible -->
+        <div class="slider-container">
+          <label for="colorBehaviorSelect">Comportement des nuances :</label>
+          <select id="colorBehaviorSelect">
+            <option value="flexible">Nuances Flexibles (+/- Variation)</option>
+            <option value="fixed">Couleurs Fixes (Strictes)</option>
+          </select>
+        </div>
+
+        <!-- Conteneur global de sélection personnalisée (Option D) -->
+        <div id="pickerContainer" class="picker-flex-layout visual-hidden">
+          <!-- Liste verticale de tes carrés de couleur favoris -->
+          <div id="swatchContainer" class="swatch-list">
+            <div class="color-swatch active" id="swatch1"></div>
+            <div class="color-swatch" id="swatch2"></div>
+            <div class="color-swatch" id="swatch3"></div>
+          </div>
+
+          <!-- Emplacement de la roue chromatique Iro.js -->
+          <div id="iroPicker"></div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 : LUMINOSITÉ GÉNÉRALE -->
+      <div class="control-group">
+        <h3>Ambiance Écran</h3>
+
+        <!-- Curseur d'ambiance Jour / Nuit -->
+        <div class="slider-container">
+          <label for="brightnessInput"
+            >Luminosité Générale : <span id="brightnessVal">100%</span></label
+          >
+          <input
+            type="range"
+            id="brightnessInput"
+            min="10"
+            max="150"
+            value="100"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Importation de la librairie Iro.js -->
+    <script src="JavaScript/iro.js"></script>
+
+    <!-- On lie notre fichier JavaScript principal -->
+    <script src="JavaScript/main.js"></script>
+  </body>
+</html>
