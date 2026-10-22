@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #121212;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.graphs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+}
+
+.box {
+    min-width: 0;
+    background: #1e1e1e;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.box h2 {
+    font-size: 20px;
+    text-align: center;
+    color: #f5f5f5;
+    margin-bottom: 5px;
+}
+
+.box p {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.canvas-container {
+    position: relative;
+    height: 280px;
+}
+
+/* Style dédié aux phrases de transition */
+.punchline-container {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+
+.punchline-container h1 {
+    margin: 0;
+}
+
+.punchline {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, #ff4757, #3ee523) 1;
+    display: inline-block;
+}
+
+/* --- SÉPARATIONS --- */
+hr {
+    width: 70%;
+    height: 3px;
+    border: none;
+    background: linear-gradient(to right, #ff4757, #3ee523);
+    border-radius: 5px;
+}
+
+.separation_bas_v1 { margin-bottom: 30px; }
+.separation_bas_v2 { margin: 60px; }
+.separation_bas_v3 { margin-top: 60px; }
+
+
+/* --- CODE V2 : NOTE EXPLICATIVE EN LISTE --- */
+.explication-container {
+    text-align: center;
+    max-width: 1000px;
+    margin: 50px auto 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.explication-texte {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #aaaaaa;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: left;
+}
+
+.explication-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.explication-liste li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.puce-couleur {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    margin-right: 12px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.puce-net { background-color: #3ee523; }
+.puce-brut { background-color: #2e86de; }
+.puce-total { background-color: #ff4757; }
+
+.explication-texte strong {
+    color: #ffffff;
+    margin-right: 4px;
+}
+
+
+/* --- CODE V3 : RÉPARTITION BUDGET --- */
+.v3-title-spacing {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.punchline-v3 {
+    border-image: linear-gradient(to right, #ff4757, #3ee523) 1;
+}
+
+.box-v3-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.explication-v3-style {
+    background: transparent;
+    padding: 10px 10px 10px 0;
+    margin: 0;
+}
+
+.explication-v3-style .explication-liste li {
+    display: block;
+    margin-bottom: 18px;
+    position: relative;
+    padding-left: 26px;
+}
+
+.explication-v3-style .explication-liste li:last-child {
+    margin-bottom: 0;
+}
+
+.explication-v3-style .puce-couleur {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    margin-right: 0;
+}
+
+.liste-desc {
+    margin: 4px 0 0 0;
+    padding-left: 10px;
+    color: #888888;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left !important;
+}
+
+.canvas-v3-height {
+    position: relative;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.puce-social { background-color: #1dd1a1; }
+.puce-services { background-color: #54a0ff; }
+.puce-privileges { background-color: #ff6b6b; }
+.puce-economie { background-color: #ff9f43; }
+.puce-dette { background-color: #576574; }
+
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .graphs {
+        grid-template-columns: 1fr;
+    }
+    .punchline {
+        font-size: 24px;
+    }
+    .box h2 {
+        font-size: 18px;
+    }
+}
+
+/* 🪐 Bouton Retour au Portfolio */
+.PortFolio {
+  position: inline-block;
+  margin: 20px 0;
+  padding: 10px 22px;
+
+  /* Couleurs de base harmonisées avec ton thème sombre */
+  color: #F8F5EE;
+  background-color: #1a1a1a;
+  
+  /* Bordure fine discrète pour le style pro */
+  border: 1px solid #333;
+  border-radius: 8px;
+  
+  font-family: sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  
+  /* Transition fluide pour les animations */
+  transition: all 0.3s ease;
+}
+
+/* 🌟 Effet au survol (Hover) */
+.PortFolio:hover {
+  background-color: #252525;
+  border-color: #4F86C6; /* Petit clin d'œil au bleu de ton portfolio */
+  color: #4F86C6;
+  
+  /* Léger déplacement vers le haut */
+  transform: translateY(-2px);
+  
+  /* L'ombre projetée vers la gauche et le bas comme tes autres boutons */
+  box-shadow: -4px 6px 12px rgba(0, 0, 0, 0.5);
+}

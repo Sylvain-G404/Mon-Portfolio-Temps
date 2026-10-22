@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparatif TVA Individuel vs National</title>
+    <!-- Chargement de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <link rel="stylesheet" href="Style/style.css" />
+    <link rel="shortcut icon" href="Assets/Favicon/Favicon.K.sf.png" type="image/x-icon" />
+    <!-- Lien officiel vers ton fichier des auteurs du site -->
+    <link rel="author" href="Human.txt" />
+  </head>
+  <body>
+    <!-- BLOC 1 : LE CONSTAT ACTUEL -->
+    <div class="graphs">
+      <div class="box">
+        <h2>📈 TVA d'un salarié individuel</h2>
+        <p>Basé sur 150 € de TVA par mois à travers les dépenses courantes</p>
+        <div class="canvas-container">
+          <canvas id="monGraphique"></canvas>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>🇫🇷 TVA globale des travailleurs</h2>
+        <p>Cumul pour les 29,4 millions d'actifs en emploi en France</p>
+        <div class="canvas-container">
+          <canvas id="monGraphiqueGlobal"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHRASE DE TRANSITION PERCUTANTE -->
+    <div class="punchline-container">
+      <h1 class="punchline">Et si on dépensait moins ?</h1>
+    </div>
+
+    <!-- BLOC 2 : L'ALTERNATIVE ÉCONOMIE -->
+    <div class="graphs">
+      <div class="box">
+        <h2>📉 L'impact d'une consommation optimisée</h2>
+        <p>En réduisant le gaspillage : objectif 50 € de TVA par mois</p>
+        <div class="canvas-container">
+          <canvas id="monGraphiqueEco"></canvas>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>🌍 L'impact à l'échelle nationale</h2>
+        <p>Ce que les travailleurs gardent dans leur poche collectivement</p>
+        <div class="canvas-container">
+          <canvas id="monGraphiqueGlobalEco"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr class="separation_bas_v1" />
+
+    <!-- PETITE NOTE EXPLICATIVE CRUCIALE EN DESSOUS DES DEUX GRAPHICS -->
+    <div class="box box-v3-center">
+      <div class="explication-texte explication-v3-style">
+        <h2>Comprendre la fiche de paie<br />(Base 1 500 € Net) :</h2>
+        <ul class="explication-liste">
+          <li>
+            <span class="puce-couleur puce-net"></span>
+            <strong>Le NET (En poche) :</strong><br />
+            <p>L'argent réel qui arrive sur votre compte en banque.</p>
+          </li>
+          <li>
+            <span class="puce-couleur puce-brut"></span>
+            <strong>Le BRUT (Le contrat) :</strong><br />
+            <p>Le salaire de référence avant le prélèvement des cotisations salariales.</p>
+          </li>
+          <li>
+            <span class="puce-couleur puce-total"></span>
+            <strong>Le COÛT TOTAL (Super-Brut) :</strong><br />
+            <p>Ce que l'entreprise paie réellement (Brut + charges patronales).</p>
+          </li>
+        </ul>
+        <p style="margin-top: 15px; margin-bottom: 0; font-size: 0.95em; color: #888">
+          * Note : À ce niveau de salaire, les lignes du Brut et du Super-Brut sont presque collées car l'État allège massivement les taxes
+          patronales sur les bas salaires.
+        </p>
+      </div>
+    </div>
+
+    <!-- CONTENEUR PRINCIPAL DES GRAPHIQUES -->
+    <div class="graphs">
+      <!-- TABLEAU 1 : L'ÉCHELLE DU SALARIÉ -->
+      <div class="box">
+        <h2>💰 Échelle Individuelle<br />VS<br />Coût Réel du Salarié</h2>
+        <p>Cumul sur 60 ans basé sur une fiche de paie à 1 500 € Net / mois</p>
+        <div class="canvas-container">
+          <!-- C'est ici que Chart.js va injecter les 3 courbes (Net, Brut, Super-Brut) -->
+          <canvas id="graphiqueIndividuelV2"></canvas>
+        </div>
+      </div>
+
+      <!-- TABLEAU 2 : L'ÉCHELLE DE LA FRANCE -->
+      <div class="box">
+        <h2>🇫🇷 Échelle Nationale<br />VS<br />Prélèvements de l'État</h2>
+        <p>Cumul global sur 60 ans pour les 29,4 millions de travailleurs actifs</p>
+        <div class="canvas-container">
+          <!-- C'est ici que Chart.js va injecter la courbe nationale globale -->
+          <canvas id="graphiqueNationalV2"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr class="separation_bas_v2" />
+
+    <!-- ========================================== -->
+    <!-- BLOC V3 : RÉPARTITION DE L'ARGENT PUBLIC   -->
+    <!-- ========================================== -->
+
+    <div class="punchline-container v3-title-spacing">
+      <h1 class="punchline punchline-v3">Où part l'argent prélevé ?</h1>
+    </div>
+
+    <!-- GRILLE DE LA V3 -->
+    <div class="graphs">
+      <!-- BLOC DE GAUCHE : LÉGENDE & CODE COULEUR -->
+      <div class="box box-v3-center">
+        <h2>📊 Utilisation réelle de vos impôts</h2>
+        <p>Répartition annuelle sur la base des 6 240 € de taxes prélevés sur votre fiche de paie</p>
+
+        <div class="explication-texte explication-v3-style">
+          <ul class="explication-liste">
+            <li>
+              <span class="puce-couleur puce-social"></span>
+              <strong>🩺 Modèle Social & Santé (57%) :</strong><br />
+              <p class="liste-desc">Retraites, hôpitaux, assurance maladie et allocations.</p>
+            </li>
+            <li>
+              <span class="puce-couleur puce-services"></span>
+              <strong>🏫 Services Publics de base (16%) :</strong><br />
+              <p class="liste-desc">Écoles, universités, police, justice et défense.</p>
+            </li>
+            <li>
+              <span class="puce-couleur puce-privileges"></span>
+              <strong>🏢 Machine & Privilèges (12%) :</strong><br />
+              <p class="liste-desc">Ministères, élus, bureaucratie centrale et collectivités.</p>
+            </li>
+            <li>
+              <span class="puce-couleur puce-economie"></span>
+              <strong>💼 Économie & Logement (10%) :</strong><br />
+              <p class="liste-desc">Infrastructures, transports et aides publiques.</p>
+            </li>
+            <li>
+              <span class="puce-couleur puce-dette"></span>
+              <strong>📉 Intérêts de la Dette (5%) :</strong><br />
+              <p class="liste-desc">Intérêts financiers reversés chaque année sur les marchés.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BLOC DE DROITE : LE FROMAGE EN ANNEAU -->
+      <div class="box">
+        <h2>🍩 Le gâteau des dépenses de l'État</h2>
+        <p>Vue d'ensemble de la ventilation budgétaire officielle</p>
+        <div class="canvas-container canvas-v3-height">
+          <!-- C'est ici que Chart.js va injecter le Doughnut -->
+          <canvas id="graphiqueDoughnutV3"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr class="separation_bas_v3" />
+
+    <a href="../../index.html" class="PortFolio">Retourné au PortFolio</a>
+
+    <script src="JavaScript/main.js"></script>
+  </body>
+</html>
