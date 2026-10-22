@@ -35,7 +35,12 @@ const colors = [
         text: '#171717'
     },
     {
-        position: 0.75,
+        position: 0.80,
+        background: '#3F6FAD',
+        text: '#171717'
+    },
+    {
+        position: 0.85,
         background: '#3F6FAD',
         text: '#F8F5EE'
     },

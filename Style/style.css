@@ -53,6 +53,23 @@ body {
     transform: translateY(-50%);
 }
 
+/* Masquer la barre de scroll proprement sur tous les navigateurs */
+
+/* Chrome, Safari, Edge, Brave */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Internet Explorer / Vieux Edge */
+html {
+  -ms-overflow-style: none;
+}
+
 .contenu h1{
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -206,7 +223,7 @@ hr {
     }
 
     .titre-plume {
-        font-size: 1.5rem !important;
+        font-size: 3.1rem !important;
     }
 
     .image-projet {
