@@ -3,8 +3,8 @@
 # ==========================================
 
 # --- Vos scripts et outils locaux ---
-generate_structure.bat
-Infos/structure_temp.txt
+**/generate_structure.bat
+**/Infos
 
 # --- Rust & Compilation (Tauri / Cargo) ---
 **/src-tauri/target/
