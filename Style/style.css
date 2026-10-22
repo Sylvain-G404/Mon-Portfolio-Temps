@@ -53,6 +53,17 @@ body {
     transform: translateY(-50%);
 }
 
+.contenu h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em; /* Un léger resserrement des lettres pour un look ultra-pro */
+}
+
+/* Optionnel : Une police très lisible pour les paragraphes */
+body, p {
+    font-family: 'Inter', sans-serif;
+}
+
 .contenu {
     position: relative;
     z-index: 1;
@@ -60,14 +71,27 @@ body {
     width: min(800px, 80%);
     margin: 0 auto;
 
-    padding-top: 30vh;
+    /* Prends 100% de la hauteur de l'écran de l'utilisateur */
+    min-height: 100vh; 
+
+    /* Centrage parfait vertical et horizontal du titre et du texte */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     text-align: center;
 }
 
+
 .contenu h1 {
     font-size: clamp(3rem, 8vw, 7rem);
     margin-bottom: 2rem;
+}
+
+.contenu p {
+    font-size: 1.2rem;
+    line-height: 1.7;
 }
 
 .titre-plume {
@@ -75,27 +99,15 @@ body {
 
     text-align: center;
 
-    font-family:
-        "Courier New",
-        "URW Chancery L",
-        "Brush Script MT",
-        "Segoe Print",
-        cursive;
-
-    font-size: 3rem;
-    font-weight: 600;
+    font-family: "Tangerine", cursive;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);;
+    font-style: normal;
 
     letter-spacing: 1px;
 
     color: inherit;
 
-    text-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.contenu p {
-    font-size: 1.2rem;
-    line-height: 1.7;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .paragraphe {
@@ -162,7 +174,7 @@ hr {
   margin: 15px 0 30px;
   padding: 10px 20px;
 
-  color: inherit;
+  color: #F8F5EE;
   background-color: black;
 
   text-decoration: none;
@@ -174,6 +186,7 @@ hr {
 .lien-projet:hover {
   background-color: #444;
   transform: scale(1.05);
+  box-shadow: -8px 8px 10px rgba(0, 0, 0, 0.65); 
 }
 
 /* 

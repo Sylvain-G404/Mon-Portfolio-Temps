@@ -25,7 +25,7 @@ const colors = [
         text: '#F8F5EE'
     },
     {
-        position: 0.25,
+        position: 0.10,
         background: '#4F86C6',
         text: '#171717'
     },
@@ -99,13 +99,9 @@ function updateTextColor(progress) {
             localProgress
         );
 
-        console.log("Texte :", (progress * 100).toFixed(1) + "%", color);
-
         document.body.style.color = color;
 
     } else if (progress <= 0.7) {
-
-        console.log("Texte : NOIR", (progress * 100).toFixed(1) + "%");
 
         document.body.style.color = '#171717';
 
@@ -120,7 +116,6 @@ function updateTextColor(progress) {
             localProgress
         );
 
-        console.log("Texte :", (progress * 100).toFixed(1) + "%", color);
 
         document.body.style.color = color;
     }
@@ -131,10 +126,7 @@ function updateSun() {
         document.documentElement.scrollHeight -
         window.innerHeight;
 
-    const progress =
-        window.scrollY / scrollMax;
-
-    console.log(`Scroll : ${(progress * 100).toFixed(1)}%`); // <--------------------
+    const progress = window.scrollY / scrollMax;
 
     updateTextColor(progress);
 
