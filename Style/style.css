@@ -212,8 +212,8 @@ hr {
 */
 
 .image-toggle {
-        display: none;
-    }
+    display: none;
+}
 
 @media (max-width: 600px) {
 
