@@ -3,14 +3,15 @@ const bouton = document.getElementById("calculer");
 // --- EVENT ----
 bouton.addEventListener("click", function () {
     const data = recupererValeurs();
-    sauvegarder(data);
 
-    if (!data) return;
+    if (!data) return; // Sécurité : On s'arrête immédiatement si les données sont invalides
+
+    sauvegarder(data); // Sécurité : On ne sauvegarde QUE si les données sont validées et propres !
 
     const surface = calculSurface(data);
 
     if (surface <= 0) {
-        afficherErreur("La surface calculée est invalide.");
+        afficherErreur("La surface calculée est invalide (inférieure ou égale à 0 m²).");
         return;
     }
 
@@ -21,19 +22,35 @@ bouton.addEventListener("click", function () {
     afficherResultats(surface, peinture, tapisserie, prix);
 });
 
-// Récupérer les valeurs des champs de saisie
+// Récupérer et valider strictement les valeurs des champs de saisie
 function recupererValeurs() {
-    const longueur = Number(document.querySelector("#longueur").value);
-    const largeur = Number(document.querySelector("#largeur").value);
-    const hauteur = Number(document.querySelector("#hauteur").value);
-    const nbPortes = Number(document.querySelector("#portes").value);
-    const nbFenetres = Number(document.querySelector("#fenetres").value);
+    // Utilisation de || 0 pour forcer une valeur numérique si le champ est vide ou buggé
+    const longueur = Number(document.querySelector("#longueur").value) || 0;
+    const largeur = Number(document.querySelector("#largeur").value) || 0;
+    const hauteur = Number(document.querySelector("#hauteur").value) || 0;
+    const nbPortes = Number(document.querySelector("#portes").value) || 0;
+    const nbFenetres = Number(document.querySelector("#fenetres").value) || 0;
     const tapisserieActive = document.querySelector("#tapisserie").checked;
 
-    if (!longueur || !largeur || !hauteur) {
-        afficherErreur("Veuillez remplir tous les champs.");
+    // 1. Vérification des champs obligatoires manquants ou égaux à zéro
+    if (longueur === 0 || largeur === 0 || hauteur === 0) {
+        afficherErreur("Veuillez remplir tous les champs obligatoires avec des valeurs supérieures à 0.");
         return null;
     }
+
+    // 2. Sécurité stricte : Limites industrielles géantes (Format Hangar XXL / SpaceX)
+    if (
+        isNaN(longueur) || longueur < 0 || longueur > 1000 ||    // Max 1 km de long
+        isNaN(largeur) || largeur < 0 || largeur > 1000 ||      // Max 1 km de large
+        isNaN(hauteur) || hauteur < 0 || hauteur > 100 ||       // Max 100 m de haut (Hangar fusée)
+        isNaN(nbPortes) || nbPortes < 0 || nbPortes > 10 ||     // Max 10 portes (ex: grands quais)
+        isNaN(nbFenetres) || nbFenetres < 0 || nbFenetres > 20   // Max 20 fenêtres
+    ) {
+        afficherErreur("Erreur : Limites maximales dépassées (Max : L/l 1000m, H 100m, 10 portes, 20 fenêtres).");
+        return null;
+    }
+
+
 
     return { longueur, largeur, hauteur, nbPortes, nbFenetres, tapisserieActive };
 }
@@ -68,31 +85,34 @@ function calculPrix(litres, rouleaux) {
 
 // Afficher les résultats
 function afficherResultats(surface, litres, rouleaux, prix) {
-
     document.querySelector("#resultat").textContent =
-        "Surface : " + surface.toFixed(2) + " m²";
+        "Surface des murs : " + surface.toFixed(2) + " m²";
 
     document.querySelector("#calculeLitre").textContent =
-        litres + " L de peinture";
+        litres + " litre(s) vous seront nécessaires";
 
     document.querySelector("#resultatTapisserie").textContent =
         rouleaux > 0
-            ? rouleaux + " rouleaux"
-            : "Pas de tapisserie";
+            ? rouleaux + " rouleau(x) nécessaire(s)"
+            : "Tapisserie désactivée";
 
     document.querySelector("#prixPeinture").textContent =
-        "Peinture : " + prix.peinture + " €";
+        "Prix de la peinture : " + prix.peinture + " €";
 
     document.querySelector("#prixTapisserie").textContent =
-        "Tapisserie : " + prix.tapisserie + " €";
+        "Prix de la tapisserie : " + prix.tapisserie + " €";
 
     document.querySelector("#prixTotal").textContent =
-        "Total : " + prix.total + " €";
+        "Prix total estimé : " + prix.total.toFixed(2) + " €";
 }
 
 // Afficher les erreurs
 function afficherErreur(message) {
     document.querySelector("#resultat").textContent = message;
+    // Nettoyage optionnel des autres champs pour éviter les données incohérentes en cas d'erreur
+    document.querySelector("#calculeLitre").textContent = "0 litre";
+    document.querySelector("#resultatTapisserie").textContent = "Calcul impossible";
+    document.querySelector("#prixTotal").textContent = "0.00 €";
 }
 
 // Sauvegarder les données dans le localStorage
@@ -102,21 +122,27 @@ function sauvegarder(data) {
 
 charger(); // Charger les données sauvegardées au chargement de la page
 
-// fonction pour charger les données sauvegardées dans le localStorage et les afficher dans les champs de saisie
+// Fonction pour charger les données sauvegardées
 function charger() {
-
     const data = localStorage.getItem("calculM2");
 
-    if (!data) return;
+    // Protection essentielle si la clé existe mais est vide ou corrompue
+    if (!data || data === "null") return;
 
-    const valeurs = JSON.parse(data);
+    try {
+        const valeurs = JSON.parse(data);
+        if (!valeurs) return;
 
-    document.querySelector("#longueur").value = valeurs.longueur;
-    document.querySelector("#largeur").value = valeurs.largeur;
-    document.querySelector("#hauteur").value = valeurs.hauteur;
-    document.querySelector("#portes").value = valeurs.nbPortes;
-    document.querySelector("#fenetres").value = valeurs.nbFenetres;
-    document.querySelector("#tapisserie").checked = valeurs.tapisserieActive;
+        document.querySelector("#longueur").value = valeurs.longueur || "";
+        document.querySelector("#largeur").value = valeurs.largeur || "";
+        document.querySelector("#hauteur").value = valeurs.hauteur || "";
+        document.querySelector("#portes").value = valeurs.nbPortes || 0;
+        document.querySelector("#fenetres").value = valeurs.nbFenetres || 0;
+        document.querySelector("#tapisserie").checked = valeurs.tapisserieActive || false;
+    } catch (e) {
+        // En cas d'erreur de parsing JSON, on nettoie pour éviter de bloquer le site
+        localStorage.removeItem("calculM2");
+    }
 }
 
 // --- RESET ---

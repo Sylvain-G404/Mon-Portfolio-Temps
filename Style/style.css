@@ -100,7 +100,6 @@ body, p {
     text-align: center;
 }
 
-
 .contenu h1 {
     font-size: clamp(3rem, 8vw, 7rem);
     margin-bottom: 2rem;

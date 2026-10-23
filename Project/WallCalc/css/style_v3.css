@@ -1,9 +1,11 @@
-/* reset global */
+/* ==========================================================================
+   1. RESET GLOBAL & BASES
+   ========================================================================== */
 * {
     box-sizing: border-box;
 }
-html,
-body {
+
+html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -11,14 +13,16 @@ body {
     color: #ffffff;
 }
 
-/* container principal */
+/* Container principal */
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* titre */
+/* ==========================================================================
+   2. EN-TÊTE (TITRES)
+   ========================================================================== */
 h1 {
     text-align: center;
     color: #00ffcc;
@@ -31,29 +35,30 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* section */
-.section {
-    background: #1e1e1e;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* effet hover sur les section */
-.section:hover {
-    transform: translateY(-2px);
-    transition: 0.2s;
-}
-
-/* titres sections */
 h2 {
     margin-top: 0;
     color: #00ffcc;
     font-size: 18px;
 }
 
-/* inputs */
+/* ==========================================================================
+   3. COMPOSANTS (SECTIONS, INPUTS, BOUTONS)
+   ========================================================================== */
+/* Cartes / Sections */
+.section {
+    background: #1e1e1e;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease; /* Ajout d'une transition fluide pour le hover */
+}
+
+.section:hover {
+    transform: translateY(-2px);
+}
+
+/* Inputs de saisie */
 input {
     width: 100%;
     padding: 10px;
@@ -64,7 +69,7 @@ input {
     color: white;
 }
 
-/* boutons */
+/* Boutons d'action (Calculer & Reset) */
 button {
     width: 100%;
     padding: 10px;
@@ -73,35 +78,51 @@ button {
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
     background: #00c9a3;
 }
 
-/* résultats */
+/* Textes de résultats */
 p {
     margin: 6px 0;
     color: #ddd;
 }
 
-.retour-portfolio {
-    padding: 5px 10px;
+/* ==========================================================================
+   4. NAVIGATION (BOUTON RETOUR PORTFOLIO)
+   ========================================================================== */
+/* Conteneur pour centrer le bouton proprement */
+.container-retour {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
+/* Style moderne et épuré du bouton retour */
 .retour-portfolio {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    background: rgba(0, 255, 204, 0.02);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .retour-portfolio:hover {
-  text-decoration: underline red;
-
-  padding: 5px 10px;
-
-  border-radius: 50px / 40px;
-
-  background-color: white;
-  color: black;
+    color: #0f0f0f;
+    background-color: #00ffcc;
+    border-color: #00ffcc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 255, 204, 0.3);
 }
