@@ -68,9 +68,7 @@ class Carte {
                     </div>
                 </div>
 
-                <div class="carte-back">
-                    <img src="../../Assets/Favicon/Favicon.K.sf.png" alt="logo">
-                </div>
+               <div class="carte-back"></div>
             </div>
         `;
     }

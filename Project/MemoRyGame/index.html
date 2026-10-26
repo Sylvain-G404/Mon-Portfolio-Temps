@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Style/style.css" />
-    <link rel="icon" href="../../Assets/Favicon/Favicon.K.sf.png" />
+    <!-- Styles globaux et spécifiques du jeu -->
+    <link rel="stylesheet" href="../MemoRyGame/Style/style.css" />
+
+    <!-- Style de l'animation (Contient la variable magique --logo-anime-image)
+    <link rel="stylesheet" href="../MemoRyGame/Style/Animation_Logo/style.css" /> -->
+
+    <link rel="icon" href="../../Assets/Favicon/Favicon.K.sf.blanc.png" />
     <title>MemoRyGame</title>
   </head>
   <body>
@@ -19,13 +24,32 @@
     </div>
     <hr />
     <div class="MemoRyGame" id="MemoRyGame">
-      <a href="../../index.html#MemoRyGame" class="retour-portfolio">
-        ← Retour au Portfolio
-      </a>
+      <a href="../../index.html#MemoRyGame" class="retour-portfolio"> ← Retour au Portfolio </a>
     </div>
 
+    <!-- ==================================================
+     1. BRIQUES DE DESSIN DU LOGO (Indépendantes)
+     ================================================== -->
+    <script src="../MemoRyGame/JavaScript/Animation_Logo/logo_externe.js"></script>
+    <script src="../MemoRyGame/JavaScript/Animation_Logo/logo_interne.js"></script>
+    <script src="../MemoRyGame/JavaScript/Animation_Logo/logo_centre.js"></script>
+
+    <!-- ==================================================
+     2. MOTEUR DE L'ANIMATION ET CANVAS VIRTUEL
+     ================================================== -->
+    <!-- Initialise le canvas en mémoire -->
+    <script src="../MemoRyGame/JavaScript/Animation_Logo/main.js"></script>
+    <!-- Gère la boucle temporelle et l'extraction toDataURL() -->
+    <script src="../MemoRyGame/JavaScript/Animation_Logo/logo_anime.js"></script>
+
+    <!-- ==================================================
+     3. LOGIQUE DU JEU DE CARTES MEMORY
+     ================================================== -->
+    <!-- Contient la classe Carte et Deck -->
     <script src="JavaScript/class.js"></script>
+
     <script src="JavaScript/songCarte.js"></script>
+    <!-- Le chef d'orchestre : lance le jeu et l'animation au DOMContentLoaded -->
     <script src="JavaScript/main.js"></script>
   </body>
 </html>

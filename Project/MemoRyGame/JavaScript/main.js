@@ -11,16 +11,24 @@ const toggle = document.getElementById("soundToggle");
 
 // ==================== SON ====================
 
+// ==================== SON ====================
+
+// Premier clic n'importe où sur la page : débloque l'autorisation audio du navigateur
+// de manière totalement invisible, SANS forcer l'activation du son du jeu.
 document.body.addEventListener("click", () => {
-    soundEnabled = true;
-    toggle.classList.remove("off");
-    toggle.textContent = "🔊";
+    // On crée un contexte audio temporaire juste pour dire au navigateur "c'est bon, l'utilisateur a interagi"
+    const contexteAudio = new (window.AudioContext || window.webkitAudioContext)();
+    if (contexteAudio.state === 'suspended') {
+        contexteAudio.resume();
+    }
 }, { once: true });
 
 
+// Gestionnaire du clic EXCLUSIF sur le bouton de son
 toggle.addEventListener("click", (e) => {
     e.stopPropagation();
 
+    // On inverse l'état réel du son uniquement ici
     soundEnabled = !soundEnabled;
     Sound.enabled = soundEnabled;
 
@@ -47,64 +55,38 @@ function afficherDeck(deck) {
 
         div.addEventListener("click", () => {
 
-            // Carte déjà trouvée
             if (div.classList.contains("matched")) return;
-
-            // Deux cartes déjà en attente de comparaison
             if (bloque) return;
-
-            // Empêche de cliquer deux fois sur la même carte
             if (premiereCarte && premiereCarte.div === div) return;
-
-
-            // =========================
-            // SON
-            // =========================
 
             if (soundEnabled) {
                 Sound.playFlip();
             }
 
-
             // =========================
             // PREMIÈRE CARTE
             // =========================
-
             if (!premiereCarte) {
-
                 premiereCarte = {
                     div: div,
                     carte: carte
                 };
 
-                // Retourne la carte
                 div.classList.add("flip");
-
-                // Agrandit la carte
                 div.classList.add("zoom");
 
-
-                // On garde une référence indépendante
                 const cartePremiere = premiereCarte;
 
-
-                // Après 2 secondes :
-                // la carte redevient petite
-                // MAIS reste face visible
                 setTimeout(() => {
-
                     cartePremiere.div.classList.remove("zoom");
-
                 }, 2000);
 
                 return;
             }
 
-
             // =========================
             // DEUXIÈME CARTE
             // =========================
-
             deuxiemeCarte = {
                 div: div,
                 carte: carte
@@ -112,67 +94,36 @@ function afficherDeck(deck) {
 
             bloque = true;
 
-            // Retourne la deuxième carte
             div.classList.add("flip");
-
-            // Agrandit la deuxième carte
             div.classList.add("zoom");
 
-
-            // IMPORTANT :
-            // on mémorise les références AVANT le timer
             const cartePremiere = premiereCarte;
             const carteDeuxieme = deuxiemeCarte;
-
 
             // =========================
             // 2 SECONDES POUR MÉMORISER
             // =========================
-
             setTimeout(() => {
-
-                // La deuxième carte reprend
-                // sa taille normale
                 carteDeuxieme.div.classList.remove("zoom");
-
 
                 // =========================
                 // COMPARAISON
                 // =========================
-
-                if (
-                    cartePremiere.carte.estMatch(
-                        carteDeuxieme.carte
-                    )
-                ) {
-
-                    // ✔ MATCH
-
+                if (cartePremiere.carte.estMatch(carteDeuxieme.carte)) {
                     updateCombo(true);
-
                     cartePremiere.div.classList.add("matched");
                     carteDeuxieme.div.classList.add("matched");
-
                     cartePremiere.div.style.pointerEvents = "none";
                     carteDeuxieme.div.style.pointerEvents = "none";
-
                 } else {
-
-                    // ❌ PAS MATCH
-
                     updateCombo(false);
-
                     cartePremiere.div.classList.remove("flip");
                     carteDeuxieme.div.classList.remove("flip");
                 }
 
-
-                // On peut recommencer
                 resetSelection();
-
             }, 2000);
         });
-
 
         table.appendChild(div);
     });
@@ -182,7 +133,6 @@ function afficherDeck(deck) {
 // ==================== RESET ====================
 
 function resetSelection() {
-
     premiereCarte = null;
     deuxiemeCarte = null;
     bloque = false;
@@ -192,11 +142,8 @@ function resetSelection() {
 // ==================== DECK ====================
 
 const deck = new Deck();
-
 deck.shuffle();
-
 afficherDeck(deck);
-
 Sound.init();
 
 
@@ -208,31 +155,30 @@ const comboElement = document.getElementById("combo");
 let score = 0;
 let combo = 0;
 
-
 function updateScore(value) {
-
     score += value;
-
     scoreElement.textContent = `Score : ${score}`;
 }
 
-
 function updateCombo(isMatch) {
-
     if (!isMatch) {
-
         combo = 0;
-
         updateScore(1);
-
     } else {
-
         combo++;
-
         if (combo >= 2) {
             updateScore(-1);
         }
     }
-
     comboElement.textContent = `Combo : x${combo}`;
 }
+
+
+// ==================================================
+// AUTOMATISATION DU DOS DES CARTES ANIMÉ
+// ==================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Lance la boucle infinie de l'animation du logo en arrière-plan
+    demarrerAnimation();
+});

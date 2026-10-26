@@ -1,40 +1,50 @@
 /* ===============  Style for the playing cards  =============== */
 .carte {
     aspect-ratio: 2 / 3;
-    width: 80px;
+    
+    /* Formule magique : la taille s'adaptte à la fois à la largeur et à la hauteur de l'écran */
+    width: clamp(35px, 9vmin, 85px); 
     background: transparent;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(20px, 1.5vw, 25px);
+    
+    /* MODIFIÉ : Augmentation de la taille de police globale de la carte */
+    font-size: clamp(16px, 2.3vmin, 26px); 
+    
     user-select: none;
     transition: transform 0.2s ease;
-
     perspective: 1000px;
 }
 
 .corner {
     position: absolute;
-    font-size: 0.6em;
+    /* MODIFIÉ : Un poil plus grand et bien épais pour sauter aux yeux */
+    font-size: 0.75em;
+    font-weight: bold;
 }
 
 .top-left {
-    top: 4px;
-    left: 4px;
+    top: 6px;  /* Ajusté pour donner de l'espace à la bordure */
+    left: 6px;
     text-align: left;
+    line-height: 0.9; /* Rapproche la valeur et le symbole verticalement */
 }
 
 .bottom-right {
-    bottom: 4px;
-    right: 4px;
+    bottom: 6px;
+    right: 6px;
     text-align: right;
     transform: rotate(180deg);
     transform-origin: center;
+    line-height: 0.9;
 }
 
 .center {
     pointer-events: none;
+    /* MODIFIÉ : Le symbole central devient immense et bien visible */
+    font-size: 1.8em;
 }
 
 .coeur, .carreau {
@@ -46,7 +56,6 @@
 }
 
 /* ===============  Flip animation  =============== */
-
 .carte-inner {
     width: 100%;
     height: 100%;
@@ -55,7 +64,6 @@
     transform-style: preserve-3d;
     transform: rotateY(180deg);
 }
-
 
 .carte:hover {
     transform: scale(1.1);
@@ -85,24 +93,31 @@
     background-color: white !important;
 }
 
+/* MODIFIÉ : Le dos de la carte utilise désormais l'animation en tâche de fond */
 .carte-back {
-    background-color: darkred;
+    background-color: #202020; /* Même fond sombre que ton univers */
+    background-image: var(--logo-anime-image); /* L'animation injectée par le JS */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotateY(180deg);
 }
 
-.carte-back img {
-    width: 80%;
-}
-
 .matched {
     opacity: 0.3;
 }
 
-
+/* ==================================================
+   RESPONSIVE DESIGN MOBILE
+   ================================================== */
 @media (max-width: 600px) {
+    .carte {
+        /* Un poil plus petit sur mobile pour forcer les 13 lignes à loger */
+        width: clamp(30px, 11vmin, 60px) !important;
+    }
 
     /* Pas de zoom au survol sur téléphone */
     .carte:hover {
@@ -122,5 +137,4 @@
     .carte.flip .carte-inner {
         transform: rotateY(0deg);
     }
-
 }

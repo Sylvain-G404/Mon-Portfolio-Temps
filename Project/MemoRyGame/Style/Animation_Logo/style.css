@@ -1,0 +1,13 @@
+/* ==================================================
+   CONFIGURATION DU CANVAS VIRTUEL ET DE LA VARIABLE
+   ================================================== */
+
+:root {
+    /* Cette variable recevra le DataURL en JavaScript à chaque frame */
+    --logo-anime-image: none;
+}
+
+#logoCanvas {
+    /* On cache complètement le canvas physique de la page */
+    display: none !important;
+}

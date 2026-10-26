@@ -1,11 +1,14 @@
 #table {
     display: grid;
-    grid-template-columns: repeat(13, auto);
-    gap: 10px;
+    grid-template-columns: repeat(13, 1fr); 
+    gap: 1vh; /* L'espace entre les cartes s'adapte à la hauteur de l'écran */
     justify-content: center;
     align-content: center;
-    width: fit-content;
-    margin: 0 auto;
+    
+    width: 95vw; /* Occupe la largeur */
+    height: 80vh; /* Occupe une grande partie de la hauteur centrale de l'écran */
+    max-width: 1400px;
+    margin: 10px auto; 
     padding: 10px;
 }
 

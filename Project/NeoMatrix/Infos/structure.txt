@@ -1,7 +1,9 @@
-TEST
+App
 ├── NeoMatrix
 ├──     ├── NeoMatrix.exe
 ├──     ├── uninstall.exe
+ScreenCite
+├── Screenshot 2026-10-22 at 01-19-25 NeoMatrix - Dynamic Pixel Wallpaper.png
 ui
 ├── Assets
 ├──     ├── Favicon
@@ -17,6 +19,4 @@ ui
 ├── human.txt
 ├── index.html
 ├── README.md
-.gitignore
 generate_structure.bat
-NeoMatrix_0.1.0_x64-setup.exe - Raccourci.lnk

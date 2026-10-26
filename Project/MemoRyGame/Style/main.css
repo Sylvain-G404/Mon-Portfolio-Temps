@@ -1,5 +1,8 @@
+/* ==================================================
+   1. SÉLECTEUR UNIVERSEL & CONFIGURATION GLOBALE
+   ================================================== */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Intègre paddings et bordures dans le calcul des tailles */
 }
 
 html, body {
@@ -9,73 +12,86 @@ html, body {
 }
 
 body {
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: midnightblue;
+    overflow: hidden; /* Supprime le micro-scroll vertical sur PC */
+    height: 100vh;
+    font-family: monospace; /* Donne un look "Dev" cohérent avec le logo */
 }
 
+/* ==================================================
+   2. CONTENEUR PRINCIPAL DU JEU (LAYOUT)
+   ================================================== */
+.MemoRyGame {
+    display: flex;
+    flex-direction: column; /* Aligne Titre -> Table -> HUD verticalement */
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 10px 0;
+}
+
+/* ==================================================
+   3. ÉLÉMENTS DE L'INTERFACE (HUD & TYPOGRAPHIE)
+   ================================================== */
 h1 {
     text-align: center;
     color: white;
     text-decoration: underline 2px red;
-    margin-top: 5px;
-}
-
-#soundToggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: white;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
-}
-
-#soundToggle.off {
-    opacity: 0.5;
+    margin: 5px 0 0 0;
 }
 
 #HUD {
     display: flex;
     justify-content: center;
     gap: 30px;
-
     color: white;
     font-size: 20px;
 }
 
-.MemoRyGame {
+/* ==================================================
+   4. COMPOSANTS SPÉCIFIQUES (BOUTONS & INTERACTION)
+   ================================================== */
+#soundToggle {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1000; /* Sécurité : passe toujours au-dessus du reste du jeu */
+}
+
+#soundToggle.off {
+    opacity: 0.5;
 }
 
 .retour-portfolio {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
     margin: 5px;
     padding: 5px 10px;
-}
-
-.retour-portfolio {
-  display: inline-block;
-  color: white;
-  text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
 
 .retour-portfolio:hover {
-  text-decoration: underline red;
+    text-decoration: underline red;
+    background-color: white;
+    color: black;
+    border-radius: 50px / 40px;
+}
 
-  padding: 5px 10px;
-
-  border-radius: 50px / 40px;
-
-  background-color: white;
-  color: black;
+/* ==================================================
+   5. RESPONSIVE MOBILE
+   ================================================== */
+@media (max-width: 600px) {
+    body {
+        overflow-y: auto; /* Autorise le scroll sur mobile si l'écran est minuscule */
+    }
 }
