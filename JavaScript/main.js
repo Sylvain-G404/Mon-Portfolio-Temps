@@ -92,39 +92,24 @@ function getColor(progress, property) {
     return colors[colors.length - 1][property];
 }
 
-function updateTextColor(progress) {
-
-    if (progress <= 0.1) {
-
-        const localProgress = progress / 0.1;
-
-        const color = interpolateColor(
-            '#F8F5EE',
-            '#171717',
-            localProgress
-        );
-
-        document.body.style.color = color;
-
-    } else if (progress <= 0.7) {
-
+function updateTextColor() {
+    // 1. On récupère la couleur de fond actuelle calculée par le lerp
+    const bg = window.getComputedStyle(document.body).backgroundColor;
+    
+    // 2. On extrait les valeurs Rouge, Vert, Bleu (rgb)
+    const rgb = bg.match(/\d+/g).map(Number);
+    
+    // 3. Formule mathématique de luminance (perception humaine de la clarté)
+    const luminance = (0.2126 * rgb[0]) + (0.7152 * rgb[1]) + (0.0722 * rgb[2]);
+    
+    // 4. Si la couleur est claire (luminance > 128), texte noir. Sinon, texte blanc.
+    if (luminance > 128) {
         document.body.style.color = '#171717';
-
     } else {
-
-        const localProgress =
-            (progress - 0.7) / 0.3;
-
-        const color = interpolateColor(
-            '#171717',
-            '#F8F5EE',
-            localProgress
-        );
-
-
-        document.body.style.color = color;
+        document.body.style.color = '#F8F5EE';
     }
 }
+
 
 function updateSun() {
     const scrollMax =

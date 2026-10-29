@@ -173,14 +173,15 @@ body, p {
 
 hr {
     width: 80%;
-    height: 3px;
+    height: 5px;
 
-    margin: 60px auto;
+    margin: 30px auto;
 
     border: none;
     border-radius: 10px;
 
-    background: #e86a6a;
+    background: linear-gradient(to right, transparent, #c0c0c0 20%, #9c9c9c 50%, #c0c0c0 80%, transparent);
+
 
     opacity: 0.8;
 }
