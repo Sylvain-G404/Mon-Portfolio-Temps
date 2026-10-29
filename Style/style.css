@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. RESET & CONFIGURATION GLOBALE
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,101 +9,82 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-width: none; /* Masque la barre sur Firefox */
+    -ms-overflow-style: none; /* Masque la barre sur IE / Vieux Edge */
+}
+
+/* Masque la barre de défilement sur Chrome, Safari, Edge, Brave */
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
     min-height: 300vh;
     overflow-x: hidden;
-
     background: #18213D;
     color: #F8F5EE;
-
-    /* transition:
-        background-color 0.15s linear,
-        color 0.15s linear; */
+    font-family: 'Inter', sans-serif;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+/Edge */
+    user-select: none;          /* Standard */
 }
 
+/* Réactivation propre de la sélection uniquement pour les éléments textuels isolés si besoin */
+p, h1, .titre-plume {
+    user-select: none;
+}
+
+/* ==========================================================================
+   2. SCÈNE & EFFET SOLEIL
+   ========================================================================== */
 .scene {
     position: fixed;
     inset: 0;
-
     pointer-events: none;
     overflow: hidden;
 }
 
 .soleil {
     position: absolute;
-
     width: 80px;
     height: 80px;
-
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 35%,
-            #fff8b0 0%,
-            #ffe066 25%,
-            #ffcc33 55%,
-            #ff9f1c 100%
-        );
-
+    background: radial-gradient(
+        circle at 35% 35%,
+        #fff8b0 0%,
+        #ffe066 25%,
+        #ffcc33 55%,
+        #ff9f1c 100% /* <- Le '%' est corrigé ici ! */
+    );
     box-shadow:
         0 0 30px rgba(255, 204, 51, 0.65),
         0 0 70px rgba(255, 180, 40, 0.4),
         0 0 130px rgba(255, 160, 20, 0.2);
-
     transform: translateY(-50%);
 }
 
-/* Masquer la barre de scroll proprement sur tous les navigateurs */
 
-/* Chrome, Safari, Edge, Brave */
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Firefox */
-html {
-  scrollbar-width: none;
-}
-
-/* Internet Explorer / Vieux Edge */
-html {
-  -ms-overflow-style: none;
-}
-
-.contenu h1{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.03em; /* Un léger resserrement des lettres pour un look ultra-pro */
-}
-
-/* Optionnel : Une police très lisible pour les paragraphes */
-body, p {
-    font-family: 'Inter', sans-serif;
-}
-
+/* ==========================================================================
+   3. STRUCTURE DU CONTENU & TYPOGRAPHIES
+   ========================================================================== */
 .contenu {
     position: relative;
     z-index: 1;
-
     width: min(800px, 80%);
     margin: 0 auto;
-
-    /* Prends 100% de la hauteur de l'écran de l'utilisateur */
     min-height: 100vh; 
-
-    /* Centrage parfait vertical et horizontal du titre et du texte */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
 }
 
 .contenu h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     font-size: clamp(3rem, 8vw, 7rem);
     margin-bottom: 2rem;
 }
@@ -112,112 +96,82 @@ body, p {
 
 .titre-plume {
     margin: 50px auto 25px;
-
     text-align: center;
-
     font-family: "Tangerine", cursive;
-    font-size: clamp(3.5rem, 8vw, 5.5rem);;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
     font-style: normal;
-
     letter-spacing: 1px;
-
     color: inherit;
-
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .paragraphe {
     max-width: 700px;
     margin: 30px auto;
-
     padding: 20px 25px;
-
     font-size: 1.1rem;
     line-height: 1.7;
-
     text-align: center;
-
     color: inherit;
-
     background: rgba(255, 255, 255, 0.08);
-
     border-radius: 12px;
 }
 
+/* ==========================================================================
+   4. ÉLÉMENTS DE LIENS & COMPOSANTS
+   ========================================================================== */
 .image-projet {
     display: block;
-
     width: min(700px, 90%);
     height: auto;
-
     margin: 30px auto;
-
     border-radius: 12px;
-
     object-fit: cover;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.15);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image-projet:hover {
     transform: scale(1.02);
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* Séparateur horizontal style "Nuage brumeux compact" (Bords fondus) */
 hr {
     width: 80%;
-    height: 5px;
-
+    height: 3px;
     margin: 30px auto;
-
     border: none;
     border-radius: 10px;
-
-    background: linear-gradient(to right, transparent, #c0c0c0 20%, #9c9c9c 50%, #c0c0c0 80%, transparent);
-
-
+    background: linear-gradient(to right, transparent, #cbd5e1 50%, transparent);
     opacity: 0.8;
 }
 
 .lien-projet {
-  display: inline-block;
-  margin: 15px 0 30px;
-  padding: 10px 20px;
-
-  color: #F8F5EE;
-  background-color: black;
-
-  text-decoration: none;
-  border-radius: 8px;
-
-  transition: 0.3s;
+    display: inline-block;
+    margin: 15px 0 30px;
+    padding: 10px 20px;
+    color: #F8F5EE;
+    background-color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .lien-projet:hover {
-  background-color: #444;
-  transform: scale(1.05);
-  box-shadow: -8px 8px 10px rgba(0, 0, 0, 0.65); 
+    background-color: #444;
+    transform: scale(1.05);
+    box-shadow: -8px 8px 10px rgba(0, 0, 0, 0.65); 
 }
 
-/* 
-    =========================
-            MOBILE
-    =========================
-*/
-
+/* ==========================================================================
+   5. COMPORTEMENT RESPONSIVE MODERNE (MOBILE)
+   ========================================================================== */
 .image-toggle {
     display: none;
 }
 
 @media (max-width: 600px) {
-
     .paragraphe {
         font-size: 1rem !important;
     }
@@ -230,52 +184,69 @@ hr {
         width: 100% !important;
     }
 
-    /* =========================
-       ZOOM DES IMAGES
-       ========================= */
-
-
     .image-toggle + label {
         display: block;
-        cursor: zoom-in;
     }
 
     .image-toggle:checked + label {
         position: fixed;
         inset: 0;
-
         z-index: 1000;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         padding: 10px;
-
         background: rgba(0, 0, 0, 0.9);
-
-        cursor: zoom-out;
     }
 
     .image-toggle:checked + label .image-projet {
         width: 100%;
         max-width: 100%;
         max-height: 100vh;
-
         object-fit: contain;
-
         margin: 0;
-
         animation: zoomImage 0.25s ease;
     }
 }
 
 @keyframes zoomImage {
-    from {
-        transform: scale(0.8);
-    }
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
+}
 
-    to {
-        transform: scale(1);
+/* ==========================================================================
+   6. CUSTOM SOURIS AUTOMATIQUE (SÉCURISÉE)
+   ========================================================================== */
+
+/* Désactivation absolue du curseur natif sur l'intégralité du site et des éléments interactifs */
+*, *::before, *::after, html, body, a, button, img, label, .image-projet, .image-toggle + label {
+    cursor: none !important;
+}
+
+/* Particules générées dynamiquement en JS (Étoiles filantes) */
+.etoile-filante {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #ffe066;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: evaporation 0.6s linear forwards;
+}
+
+@keyframes evaporation {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px #fff8b0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0) rotate(180deg);
+        opacity: 0;
+        filter: drop-shadow(0 0 0px transparent);
     }
 }
