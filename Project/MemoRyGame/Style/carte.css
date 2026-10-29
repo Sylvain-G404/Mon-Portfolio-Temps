@@ -104,6 +104,7 @@
     align-items: center;
     justify-content: center;
     transform: rotateY(180deg);
+    will-change: background-image;
 }
 
 .matched {
