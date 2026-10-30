@@ -1,0 +1,14 @@
+﻿C:.\Effet Arc-en-Ciel
+|   .gitignore
+|   generate_structure_V2.bat
+|   human.txt
+|   index.html
++---Assets
+|   \---Favicon
+|       |   Favicon.K.sf.blanc.png
+|       \---Favicon.K.sf.png
++---Infos_Structure
++---JavaScript
+|   \---main.js
+\---Style
+    \---style.css

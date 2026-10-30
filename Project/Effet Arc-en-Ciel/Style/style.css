@@ -1,0 +1,314 @@
+/* ========================================================
+   1. RESET & STRUCTURE GLOBALE
+   ======================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0d0d11; /* Un noir légèrement bleuté pour faire ressortir le néon */
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+/* ========================================================
+   2. STYLES DU TITRE PRINCIPAL (ARC-EN-CIEL BOOSTÉ)
+   ======================================================== */
+.title-container {
+    position: relative;
+    padding: 1rem 2rem;
+    perspective: 1000px;
+    display: inline-block;
+}
+
+.main-title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    
+    /* BLANC PAR DÉFAUT */
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    
+    /* UN VRAI SPECTRE ARC-EN-CIEL COMPLET & ÉQUILIBRÉ */
+    background: linear-gradient(
+        90deg, 
+        #ff0055, /* Rouge/Magenta */
+        #ff5500, /* Orange */
+        #ffcc00, /* Jaune */
+        #00ff66, /* Vert */
+        #00ffff, /* Cyan */
+        #0055ff, /* Bleu */
+        #aa00ff, /* Violet */
+        #ff0055  /* Retour au Rouge pour la boucle */
+    );
+    background-size: 200% auto;
+    background-position: center center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+    transition: transform 0.4s ease, text-shadow 0.4s ease, background-position 0.6s ease, -webkit-text-fill-color 0.3s ease; 
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Base des capteurs invisibles du titre */
+.title-sensor {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 2;
+}
+
+.tl-left { left: 0; }
+.tl-right { right: 0; }
+
+/* --- Animation du titre au survol --- */
+
+/* Quand on survole la GAUCHE */
+.title-sensor.tl-left:hover ~ .main-title {
+    transform: rotateY(-18deg) translateZ(15px);
+    background-position: 0% center;
+    -webkit-text-fill-color: transparent;
+    
+    text-shadow: none; /* On garde le texte interne transparent et propre */
+    
+    /* LE RETOUR DE LA 3D : On cumule des drop-shadow noirs et nets de 1px pour créer l'épaisseur de la coque externe */
+    filter: drop-shadow(1px 1px 0px #0a0a0f)
+            drop-shadow(2px 2px 0px #0a0a0f)
+            drop-shadow(3px 3px 0px #0a0a0f)
+            drop-shadow(4px 4px 0px #0a0a0f)
+            drop-shadow(5px 5px 0px #0a0a0f)
+            /* L'ombre portée finale et le halo lumineux */
+            drop-shadow(8px 8px 12px rgba(0, 0, 0, 0.9))
+            drop-shadow(0px 0px 15px rgba(255, 0, 85, 0.486));
+}
+
+/* Quand on survole la DROITE */
+.title-sensor.tl-right:hover ~ .main-title {
+    transform: rotateY(18deg) translateZ(15px);
+    background-position: 100% center;
+    -webkit-text-fill-color: transparent;
+    
+    text-shadow: none;
+    
+    /* On inverse la direction des drop-shadow (-1px, -2px...) pour la perspective */
+    filter: drop-shadow(-1px 1px 0px #0a0a0f)
+            drop-shadow(-2px 2px 0px #0a0a0f)
+            drop-shadow(-3px 3px 0px #0a0a0f)
+            drop-shadow(-4px 4px 0px #0a0a0f)
+            drop-shadow(-5px 5px 0px #0a0a0f)
+            drop-shadow(-8px 8px 12px rgba(0, 0, 0, 0.9))
+            drop-shadow(0px 0px 15px rgba(0, 255, 204, 0.3));
+}
+
+
+
+
+
+/* ========================================================
+   3. STRUCTURE DE LA GRILLE & DES CARTES
+   ======================================================== */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    perspective: 1000px;
+    background: transparent;
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #171721;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Inclus le box-shadow et le border-color dans la transition pour le Glow */
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden; 
+    
+    /* Centrage parfait avec Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================================
+   4. LOGO ET EFFET HOLOGRAPHIQUE PROPULSÉ
+   ======================================================== */
+.card-logo {
+    width: 60%; 
+    height: auto;
+    object-fit: contain;
+    z-index: 5; /* Forcé au premier plan pour rester visible à 100% tout le temps */
+    opacity: 0.9; /* Visible par défaut */
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.holo-layer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* ARC-EN-CIEL BOOSTÉ : Couleurs beaucoup plus vives, contrastées et resserrées */
+    background: linear-gradient(
+        115deg,
+        transparent 15%,
+        #ff0055 25%,
+        #7a00ff 35%,
+        #00ffcc 50%,
+        #ffcc00 65%,
+        #ff0055 75%,
+        transparent 85%
+    );
+    background-size: 200% 200%;
+    background-position: 50% 50%;
+    mix-blend-mode: color-dodge; /* L'effet fusion métallique brillant */
+    opacity: 0;
+    transition: background-position 0.5s ease, opacity 0.4s ease;
+    z-index: 2; /* Reste sagement en arrière-plan sous le logo */
+}
+
+/* ========================================================
+   5. DÉTECTEURS (SENSORS) & HOVERS DES CARTES
+   ======================================================== */
+.sensor {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    z-index: 10; /* Au-dessus de tout pour chopper le curseur */
+}
+
+/* Positionnement des quadrants */
+.tl { top: 0; left: 0; }
+.tr { top: 0; right: 0; }
+.bl { bottom: 0; left: 0; }
+.br { bottom: 0; right: 0; }
+
+/*--- Animations au survol ---*/
+.sensor:hover ~ .card-content .holo-layer {
+    opacity: 0.85; /* Un chouïa d'opacité en plus pour faire claquer le reflet */
+}
+
+.sensor:hover ~ .card-content .card-logo {
+    opacity: 1;
+    transform: scale(1.08); /* Effet pop-out sur le logo */
+}
+
+/*--- Mouvements du reflet arc-en-ciel resserré ---*/
+.sensor.tl:hover ~ .card-content .holo-layer { background-position: 15% 15%; }
+.sensor.tr:hover ~ .card-content .holo-layer { background-position: 85% 15%; }
+.sensor.bl:hover ~ .card-content .holo-layer { background-position: 15% 85%; }
+.sensor.br:hover ~ .card-content .holo-layer { background-position: 85% 85%; }
+
+/*--- Mouvements 3D + EFFET GLOW (LUMIÈRE EXTERNE CYAN/MAGENTA) ---*/
+.sensor.tl:hover ~ .card-content {
+    transform: rotateX(-12deg) rotateY(12deg) translateZ(15px);
+    border-color: #ff0055;
+    box-shadow: -15px -15px 40px rgba(255, 0, 85, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sensor.tr:hover ~ .card-content {
+    transform: rotateX(-12deg) rotateY(-12deg) translateZ(15px);
+    border-color: #00ffcc;
+    box-shadow: 15px -15px 40px rgba(0, 255, 204, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sensor.bl:hover ~ .card-content {
+    transform: rotateX(12deg) rotateY(12deg) translateZ(15px);
+    border-color: #7a00ff;
+    box-shadow: -15px 15px 40px rgba(122, 0, 255, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sensor.br:hover ~ .card-content {
+    transform: rotateX(12deg) rotateY(-12deg) translateZ(15px);
+    border-color: #ffcc00;
+    box-shadow: 15px 15px 40px rgba(255, 204, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ========================================================
+   6. BOUTON RETOUR AU PORTFOLIO (EFFET ARC-EN-CIEL 3D)
+   ======================================================== */
+.btn-back-portfolio {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 30px;
+    
+    /* Couleur du texte par défaut */
+    color: #ffffff;
+    
+    /* Le même spectre arc-en-ciel équilibré */
+    background: linear-gradient(
+        90deg, 
+        #ff0055, /* Rouge/Magenta */
+        #ff5500, /* Orange */
+        #ffcc00, /* Jaune */
+        #00ff66, /* Vert */
+        #00ffff, /* Cyan */
+        #0055ff, /* Bleu */
+        #aa00ff, /* Violet */
+        #ff0055  /* Retour au Rouge */
+    );
+    background-size: 200% auto;
+    background-position: center center;
+    
+    /* Bordure subtile et transitions fluides */
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, background-position 0.5s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* --- Effet au Survol (Hover) --- */
+.btn-back-portfolio:hover {
+    transform: translateY(-4px) scale(1.03); /* Le bouton s'élève légèrement */
+    background-position: 0% center; /* Fait glisser l'arc-en-ciel */
+    border-color: transparent;
+
+    /* Effet d'épaisseur 3D noire sous le bouton */
+    filter: drop-shadow(1px 1px 0px #0a0a0f)
+            drop-shadow(2px 2px 0px #0a0a0f)
+            drop-shadow(3px 3px 0px #0a0a0f)
+            drop-shadow(4px 4px 0px #0a0a0f)
+            /* Halo lumineux diffus tout autour */
+            drop-shadow(0px 0px 20px rgba(122, 0, 255, 0.6));
+            
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Effet au Clic (Active) --- */
+.btn-back-portfolio:active {
+    transform: translateY(-1px) scale(1deg); /* Le bouton s'enfonce au clic */
+    filter: drop-shadow(1px 1px 0px #0a0a0f)
+            drop-shadow(0px 0px 10px rgba(122, 0, 255, 0.4));
+}

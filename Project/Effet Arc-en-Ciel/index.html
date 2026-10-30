@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon du site -->
+    <link rel="shortcut icon" href="../../Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
+    <!-- Lien vers ta signature secrète de développeur -->
+    <link rel="author" href="human.txt" />
+
+    <link rel="stylesheet" href="Style/style.css" />
+
+    <title>Effet Arc-en-Ciel</title>
+  </head>
+
+  <!-- Le conteneur du titre avec ses capteurs CSS pur -->
+  <div class="title-container">
+    <div class="title-sensor tl-left"></div>
+    <div class="title-sensor tl-right"></div>
+
+    <!-- Le vrai titre qui va bouger -->
+    <h1 class="main-title">Effet Arc-en-Ciel</h1>
+  </div>
+
+  <main class="cards-container">
+    <!-- Répète cette structure pour chaque carte -->
+    <div class="card">
+      <!-- Nos 4 capteurs invisibles en CSS pur -->
+      <div class="sensor tl"></div>
+      <div class="sensor tr"></div>
+      <div class="sensor bl"></div>
+      <div class="sensor br"></div>
+
+      <!-- Le contenu de ta carte (l'arc-en-ciel ira ici) -->
+      <div class="card-content">
+        <!-- Notre calque holographique -->
+        <div class="holo-layer"></div>
+        <!-- Ton logo bien au centre -->
+        <img class="card-logo" src="../../Assets/Favicon/Favicon.K.sf.blanc.png" alt="Mon Logo" />
+      </div>
+    </div>
+
+    <!-- Deuxième carte pour l'exemple -->
+    <div class="card">
+      <div class="sensor tl"></div>
+      <div class="sensor tr"></div>
+      <div class="sensor bl"></div>
+      <div class="sensor br"></div>
+      <div class="card-content">
+        <div class="holo-layer"></div>
+        <img class="card-logo" src="../../Assets/Favicon/Favicon.K.sf.blanc.png" alt="Mon Logo" />
+      </div>
+    </div>
+  </main>
+  <a href="../../index.html" class="btn-back-portfolio"> Retour au Portfolio </a>
+
+  <body>
+    <script src="JavaScript/main.js"></script>
+  </body>
+</html>
