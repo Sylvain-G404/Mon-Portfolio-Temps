@@ -132,11 +132,11 @@ function boucleAutoScroll() {
     // Calcul de l'écart vertical entre l'œil fixe et le curseur actuel
     const distanceY = sourisY - oeilOrigineY;
 
-    // Zone neutre : si la souris est à moins de 30px de l'œil, on ne scrolle pas
-    if (Math.abs(distanceY) > 30) {
+    // Zone neutre : si la souris est à moins de 20px de l'œil, on ne scrolle pas
+    if (Math.abs(distanceY) > 20) {
         // Sensibilité du scroll : plus on s'éloigne, plus la vitesse augmente
-        // On divise par 4 pour garder un défilement contrôlable et fluide
-        const vitesseScroll = distanceY / 4;
+        // On divise par 2 pour garder un défilement contrôlable et fluide
+        const vitesseScroll = distanceY / 2;
 
         // Déplacement physique de la fenêtre de navigation
         window.scrollBy(0, vitesseScroll);
