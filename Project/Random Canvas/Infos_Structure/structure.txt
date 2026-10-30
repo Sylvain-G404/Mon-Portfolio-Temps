@@ -1,0 +1,18 @@
+﻿C:.\Random Canvas
+|   .gitignore
+|   generate_structure_V2.bat
+|   human.txt
+|   index.html
+|   README.md
++---Assets
+|   \---Favicon
+|       |   Favicon.K.sf.blanc.png
+|       \---Favicon.K.sf.png
++---Infos_Structure
++---JavaScript
+|   |   dessin.js
+|   \---main.js
++---Screen_Site
+|   \---Screenshot 2026-10-28 at 09-59-20 Random Dessin Canvas.png
+\---Style
+    \---style.css

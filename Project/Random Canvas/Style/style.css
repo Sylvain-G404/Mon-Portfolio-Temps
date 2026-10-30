@@ -1,0 +1,199 @@
+/* ==========================================================================
+   1. CONFIGURATION GÉNÉRALE & TYPOGRAPHIE
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace; /* Style code/terminal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    color: #00ff00; /* Vert fluo */
+    text-shadow: 0 0 10px #00ff00;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   2. ZONE DE DESSIN (CANVAS)
+   ========================================================================== */
+canvas {
+    width: 100%;             /* Prend toute la largeur disponible sur mobile */
+    max-width: 800px;        /* S'arrête à 800px max sur ordinateur */
+    height: auto;
+    aspect-ratio: 2 / 1;     /* Garde les proportions parfaites (2x plus large que haut) */
+    background-color: #111;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+    border-radius: 4px;
+}
+
+/* Fond en damier Photoshop pour afficher la transparence (ON LE GARDE !) */
+canvas.transparent {
+    background-image: 
+        linear-gradient(45deg, #222 25%, transparent 25%), 
+        linear-gradient(-45deg, #222 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #222 75%), 
+        linear-gradient(-45deg, transparent 75%, #222 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    background-color: #333; 
+}
+
+
+/* ==========================================================================
+   3. ZONE DES CONTRÔLES & INTERFACE
+   ========================================================================== */
+.controls {
+    margin-top: 25px;
+    display: flex;
+    align-items: flex-end; /* Aligne le bas du bouton générer avec le bas du bouton télécharger */
+    gap: 20px; /* Crée un espace propre entre le bouton Chaos et le groupe de droite */
+}
+
+/* Bloc qui empile la checkbox au-dessus de son bouton */
+.download-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre la checkbox horizontalement par rapport au bouton */
+    gap: 8px; /* Espace entre la checkbox et le bouton */
+}
+
+/* Label de la checkbox */
+.container-checkbox {
+    color: #00ff00;
+    font-size: 0.9rem; /* Plus discret et élégant pour l'interface */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+/* La case à cocher native */
+.container-checkbox input {
+    accent-color: #00ff00; /* Force la couleur verte sur la coche */
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   4. BOUTONS (STYLE RETRO-CYBERPUNK)
+   ========================================================================== */
+button {
+    background-color: transparent;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Animations au survol et au clic */
+button:hover {
+    background-color: #00ff00;
+    color: black;
+    box-shadow: 0 0 20px #00ff00;
+}
+
+button:active {
+    transform: scale(0.95); /* Effet d'enfoncement dynamique */
+}
+
+/* ==========================================================================
+   5. RÈGLES RESPONSIVE (MOBILE)
+   ========================================================================== */
+@media (max-width: 600px) {
+    /* On réduit le titre pour qu'il tienne parfaitement sur une ligne */
+    h1 {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    /* On empile les éléments de contrôle verticalement */
+    .controls {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0 20px;
+        gap: 15px; /* Un poil moins d'espace entre les blocs */
+    }
+    
+    .download-group {
+        width: 100%;
+        gap: 6px;
+    }
+
+    /* Ajustement des boutons pour le mobile */
+    button {
+        width: 100%; /* Les boutons prennent toute la largeur sur mobile */
+        font-size: 0.95rem; /* Texte légèrement plus petit pour éviter les retours à la ligne forcés */
+        padding: 10px 16px; /* Boutons légèrement moins épais */
+    }
+}
+
+
+/* ==========================================================================
+   6. BOUTON RETOUR AU PORTFOLIO (STYLE VERT FLUO / TERMINAL)
+   ========================================================================== */
+.btn-back-portfolio {
+    display: inline-block;
+    margin-top: 30px;
+    background-color: transparent;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+/* Animations au survol et au clic */
+.btn-back-portfolio:hover {
+    background-color: #00ff00;
+    color: black;
+    box-shadow: 0 0 20px #00ff00;
+    transform: translateY(-3px); /* Petit saut vers le haut */
+}
+
+.btn-back-portfolio:active {
+    transform: scale(0.95) translateY(-1px); /* S'enfonce au clic */
+}
+
+/* Ajustement responsive mobile */
+@media (max-width: 600px) {
+    .btn-back-portfolio {
+        width: calc(100% - 40px); /* S'adapte à la largeur comme les autres boutons */
+        margin-top: 20px;
+    }
+}

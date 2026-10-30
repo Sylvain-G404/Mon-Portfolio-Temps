@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon du site -->
+    <link rel="shortcut icon" href="Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
+    <!-- Lien vers ta signature secrète de développeur -->
+    <link rel="author" href="human.txt" />
+
+    <link rel="stylesheet" href="Style/style.css" />
+
+    <title>Random Dessin Canvas</title>
+  </head>
+
+  <body>
+    <h1>🎲 Random Dessin Canvas 🎲</h1>
+
+    <!-- Notre zone de dessin -->
+    <canvas id="monCanvas"></canvas>
+
+    <!-- Notre bouton magique -->
+    <div class="controls">
+      <!-- Bouton Générer tout seul à gauche -->
+      <button id="btnRandom">Générer le Chaos 🚀</button>
+
+      <!-- Groupe Téléchargement aligné à droite -->
+      <div class="download-group">
+        <label class="container-checkbox"> <input type="checkbox" id="checkTransparent" /> Fond Transparent 🛸 </label>
+        <button id="btnTelecharger">Sauvegarder l'Art 💾</button>
+      </div>
+    </div>
+    <a href="../../index.html" class="btn-back-portfolio"> Retour au Portfolio </a>
+
+    <!-- Vos contrôles et votre canvas ci-dessus -->
+
+    <!-- 1. On charge d'abord la boîte à outils de dessin -->
+    <script src="JavaScript/dessin.js"></script>
+    <!-- 2. On charge ensuite le chef d'orchestre -->
+    <script src="JavaScript/main.js"></script>
+  </body>
+</html>
