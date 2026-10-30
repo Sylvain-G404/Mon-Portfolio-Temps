@@ -1,0 +1,20 @@
+﻿C:.\NeoMatrix
+|   generate_structure_V2.bat
++---App
+|   \---NeoMatrix
+|       |   NeoMatrix.exe
+|       \---uninstall.exe
++---Infos
++---Infos_Structure
++---ScreenCite
+|   \---Screenshot 2026-10-22 at 01-19-25 NeoMatrix - Dynamic Pixel Wallpaper.png
++---src-tauri
+\---ui
+    |   human.txt
+    |   index.html
+    |   README.md
+    +---JavaScript
+    |   |   iro.js
+    |   \---main.js
+    \---Style
+        \---style.css

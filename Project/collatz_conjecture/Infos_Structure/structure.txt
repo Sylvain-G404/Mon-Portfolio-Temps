@@ -1,0 +1,12 @@
+﻿C:.\collatz_conjecture
+|   Collatz_Conjecture.txt
+|   generate_structure_V2.bat
+|   index.html
+|   README.md
++---css
+|   \---style.css
++---Infos_Structure
++---ScreenCite
+|   \---Screenshot 2026-10-29 at 16-12-40 Conjecture de Collatz.png
+\---script
+    \---script.js

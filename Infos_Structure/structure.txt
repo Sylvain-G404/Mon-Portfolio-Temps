@@ -1,0 +1,111 @@
+﻿C:.\Portfolio
+|   .gitignore
+|   generate_structure_V2.bat
+|   human.txt
+|   index.html
+|   README.md
++---Assets
+|   \---Favicon
+|       |   Favicon.K.sf.blanc.png
+|       \---Favicon.K.sf.png
++---Data
+|   \---data.json
++---Infos_Structure
++---JavaScript
+|   \---main.js
++---Project
+|   +---collatz_conjecture
+|   |   |   Collatz_Conjecture.txt
+|   |   |   index.html
+|   |   |   README.md
+|   |   +---css
+|   |   |   \---style.css
+|   |   +---Infos_Structure
+|   |   +---ScreenCite
+|   |   |   \---Screenshot 2026-10-29 at 16-12-40 Conjecture de Collatz.png
+|   |   \---script
+|   |       \---script.js
+|   +---Kaprekar
+|   |   |   index.html
+|   |   |   README.md
+|   |   +---Infos_Structure
+|   |   +---JavaScript
+|   |   |   \---main.js
+|   |   +---ScreenCite
+|   |   |   \---Screenshot 2026-10-29 at 16-11-18 Algorithme de Kaprekar.png
+|   |   \---Style
+|   |       \---main.css
+|   +---MemoRyGame
+|   |   |   index.html
+|   |   |   README.md
+|   |   +---Infos_Structure
+|   |   +---JavaScript
+|   |   |   |   class.js
+|   |   |   |   main.js
+|   |   |   |   songCarte.js
+|   |   |   \---Animation_Logo
+|   |   |       |   logo_anime.js
+|   |   |       |   logo_centre.js
+|   |   |       |   logo_externe.js
+|   |   |       |   logo_interne.js
+|   |   |       \---main.js
+|   |   +---ScreenCite
+|   |   |   |   Screenshot 2026-10-26 at 06-31-45 MemoRyGame.png
+|   |   |   |   Screenshot 2026-10-26 at 06-36-07 MemoRyGame.png
+|   |   |   \---Avent
+|   |   |       |   Screenshot 2026-04-29 at 04-24-41 MemoRyGame.png
+|   |   |       \---Screenshot 2026-04-29 at 04-26-10 MemoRyGame.png
+|   |   +---Sounds
+|   |   |   \---flipcard.mp3
+|   |   \---Style
+|   |       |   carte.css
+|   |       |   main.css
+|   |       |   style.css
+|   |       |   table.css
+|   |       \---Animation_Logo
+|   |           \---style.css
+|   +---NeoMatrix
+|   |   +---App
+|   |   |   \---NeoMatrix
+|   |   |       |   NeoMatrix.exe
+|   |   |       \---uninstall.exe
+|   |   +---Infos_Structure
+|   |   +---ScreenCite
+|   |   |   \---Screenshot 2026-10-22 at 01-19-25 NeoMatrix - Dynamic Pixel Wallpaper.png
+|   |   +---src-tauri
+|   |   \---ui
+|   |       |   human.txt
+|   |       |   index.html
+|   |       |   README.md
+|   |       +---JavaScript
+|   |       |   |   iro.js
+|   |       |   \---main.js
+|   |       \---Style
+|   |           \---style.css
+|   +---TVA
+|   |   |   index.html
+|   |   +---Infos_Structure
+|   |   +---JavaScript
+|   |   |   \---main.js
+|   |   +---Screenshot_Site
+|   |   |   \---Screenshot 2026-10-18 at 11-47-16 Comparatif TVA Individuel vs National.png
+|   |   \---Style
+|   |       \---style.css
+|   \---WallCalc
+|       |   index.html
+|       +---css
+|       |   |   style.css
+|       |   |   style_v2.css
+|       |   \---style_v3.css
+|       +---Infos_Structure
+|       +---js
+|       |   |   script.js
+|       |   \---script_v2.js
+|       \---Screen_Site
+|           |   Screenshot 2026-04-22 at 18-13-43 Calcule M².Style.png
+|           |   Screenshot 2026-04-23 at 01-28-36 Calcule M².Style_v2.png
+|           |   Screenshot 2026-04-23 at 02-15-50 Calcule M².Style_v3.png
+|           |   Screenshot 2026-05-01 at 13-33-40 Calcule M².png
+|           \---Screenshot 2026-08-08 at 11-58-30 Calcule M².png
+\---Style
+    \---style.css

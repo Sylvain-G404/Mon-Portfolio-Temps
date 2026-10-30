@@ -1,0 +1,11 @@
+﻿C:.\Kaprekar
+|   generate_structure_V2.bat
+|   index.html
+|   README.md
++---Infos_Structure
++---JavaScript
+|   \---main.js
++---ScreenCite
+|   \---Screenshot 2026-10-29 at 16-11-18 Algorithme de Kaprekar.png
+\---Style
+    \---main.css

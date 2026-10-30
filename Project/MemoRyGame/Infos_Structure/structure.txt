@@ -1,0 +1,31 @@
+﻿C:.\MemoRyGame
+|   generate_structure_V2.bat
+|   index.html
+|   README.md
++---Infos
++---Infos_Structure
++---JavaScript
+|   |   class.js
+|   |   main.js
+|   |   songCarte.js
+|   \---Animation_Logo
+|       |   logo_anime.js
+|       |   logo_centre.js
+|       |   logo_externe.js
+|       |   logo_interne.js
+|       \---main.js
++---ScreenCite
+|   |   Screenshot 2026-10-26 at 06-31-45 MemoRyGame.png
+|   |   Screenshot 2026-10-26 at 06-36-07 MemoRyGame.png
+|   \---Avent
+|       |   Screenshot 2026-04-29 at 04-24-41 MemoRyGame.png
+|       \---Screenshot 2026-04-29 at 04-26-10 MemoRyGame.png
++---Sounds
+|   \---flipcard.mp3
+\---Style
+    |   carte.css
+    |   main.css
+    |   style.css
+    |   table.css
+    \---Animation_Logo
+        \---style.css

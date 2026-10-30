@@ -1,0 +1,10 @@
+﻿C:.\TVA
+|   generate_structure_V2.bat
+|   index.html
++---Infos_Structure
++---JavaScript
+|   \---main.js
++---Screenshot_Site
+|   \---Screenshot 2026-10-18 at 11-47-16 Comparatif TVA Individuel vs National.png
+\---Style
+    \---style.css
