@@ -105,31 +105,3 @@ window.addEventListener('scroll', () => {
 
 // Initialisation au chargement de la page
 updateSun();
-
-/* --------------------------------------------------------- */
-/* ANIMATION SOURIS : ÉTOILES FILANTES                      */
-/* --------------------------------------------------------- */
-
-window.addEventListener('mousemove', (e) => {
-    creerEtoile(e.clientX, e.clientY);
-});
-
-function creerEtoile(x, y) {
-    const etoile = document.createElement('div');
-    etoile.classList.add('etoile-filante');
-    
-    etoile.style.left = `${x}px`;
-    etoile.style.top = `${y}px`;
-    
-    // Taille aléatoire entre 15px et 25px
-    const taille = Math.random() * 10 + 15; 
-    etoile.style.width = `${taille}px`;
-    etoile.style.height = `${taille}px`;
-
-    document.body.appendChild(etoile);
-
-    // Nettoyage automatique du DOM après l'animation CSS (0.6s)
-    setTimeout(() => {
-        etoile.remove();
-    }, 600);
-}
