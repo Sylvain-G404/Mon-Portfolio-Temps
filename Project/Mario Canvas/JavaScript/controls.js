@@ -6,18 +6,60 @@ const touches = {
     droite: false  // Touche D
 };
 
-// --- DANS TON FICHIER DE TOUCHES ---
+// ==========================================
+// 1. ÉCOUTEURS CLAVIER (PC)
+// ==========================================
 
 window.addEventListener('keydown', (e) => {
-    if (e.key === "ArrowLeft")  touches.gauche = true;
-    if (e.key === "ArrowRight") touches.droite = true;
-    if (e.key === "ArrowUp")    touches.haut = true;
-    if (e.key === "ArrowDown")  touches.bas = true;
+    switch (e.code) {
+        case 'KeyW': touches.haut = true; break;
+        case 'KeyA': touches.gauche = true; break;
+        case 'KeyS': touches.bas = true; break;
+        case 'KeyD': touches.droite = true; break;
+    }
 });
 
 window.addEventListener('keyup', (e) => {
-    if (e.key === "ArrowLeft")  touches.gauche = false;
-    if (e.key === "ArrowRight") touches.droite = false;
-    if (e.key === "ArrowUp")    touches.haut = false;
-    if (e.key === "ArrowDown")  touches.bas = false;
+    switch (e.code) {
+        case 'KeyW': touches.haut = false; break;
+        case 'KeyA': touches.gauche = false; break;
+        case 'KeyS': touches.bas = false; break;
+        case 'KeyD': touches.droite = false; break;
+    }
+});
+
+// ==========================================
+// 2. ÉCOUTEURS TACTILES (MOBILE)
+// ==========================================
+
+// Fonction utilitaire pour lier un bouton tactile à une propriété de l'objet 'touches'
+function lierBoutonTactile(idElement, proprieteTouche) {
+    const bouton = document.getElementById(idElement);
+    if (!bouton) return;
+
+    // Quand on pose le doigt
+    bouton.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Bloque le comportement natif du navigateur mobile
+        touches[proprieteTouche] = true;
+    });
+
+    // Quand on retire le doigt
+    bouton.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        touches[proprieteTouche] = false;
+    });
+
+    // Sécurité : si le doigt glisse en dehors du bouton
+    bouton.addEventListener('touchcancel', (e) => {
+        e.preventDefault();
+        touches[proprieteTouche] = false;
+    });
+}
+
+// On applique la logique sur nos 4 boutons HTML
+document.addEventListener("DOMContentLoaded", () => {
+    lierBoutonTactile('touch-left', 'gauche');
+    lierBoutonTactile('touch-right', 'droite');
+    lierBoutonTactile('touch-up', 'haut');
+    lierBoutonTactile('touch-down', 'bas');
 });

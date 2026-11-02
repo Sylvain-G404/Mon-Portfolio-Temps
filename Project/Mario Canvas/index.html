@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon du site -->
-    <link rel="shortcut icon" href="../../Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
     <!-- Lien vers ta signature secrète de développeur -->
     <link rel="author" href="human.txt" />
 
@@ -15,6 +15,21 @@
 
   <body>
     <canvas id="gameCanvas"></canvas>
+
+    <!-- Les boutons virtuels tactiles -->
+    <div id="mobile-controls">
+      <!-- Côté gauche : Pour se déplacer -->
+      <div class="control-group">
+        <div class="btn-touch" id="touch-left">◀</div>
+        <div class="btn-touch" id="touch-right">▶</div>
+      </div>
+
+      <!-- Côté droit : Pour sauter et s'accroupir -->
+      <div class="control-group">
+        <div class="btn-touch" id="touch-down">▼</div>
+        <div class="btn-touch" id="touch-up">▲</div>
+      </div>
+    </div>
 
     <!-- Le personnage et ses composants  -->
     <script src="JavaScript/stickman.js"></script>

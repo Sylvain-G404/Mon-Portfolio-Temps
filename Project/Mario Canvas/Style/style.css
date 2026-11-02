@@ -24,3 +24,54 @@ canvas {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Conteneur global des contrôles mobiles */
+#mobile-controls {
+  display: none; /* Caché par défaut sur PC */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1024px; /* Aligné sur la largeur de ton canvas */
+  justify-content: space-between;
+  padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Groupes de boutons (Direction à gauche, Actions à droite) */
+.control-group {
+  display: flex;
+  gap: 15px;
+}
+
+/* Style des boutons tactiles */
+.btn-touch {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: manipulation; /* Évite le zoom au double-clic sur téléphone */
+  cursor: pointer;
+}
+
+/* Effet visuel quand le joueur pose le doigt dessus */
+.btn-touch:active {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #000000;
+}
+
+/* Détection des écrans tactiles ou mobiles */
+@media (max-width: 1024px), (pointer: coarse) {
+  #mobile-controls {
+    display: flex; /* S'affiche uniquement sur mobile */
+  }
+}
