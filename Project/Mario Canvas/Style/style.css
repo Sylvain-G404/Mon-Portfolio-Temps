@@ -24,7 +24,7 @@ body {
   width: 95vw; /* Occupe la quasi-totalité de la largeur de l'écran mobile */
   max-width: 1024px;
   max-height: 576px;
-  max-height: 80dvh;
+  max-height: 85dvh;
   aspect-ratio: 16 / 9;
   display: flex;
   justify-content: center;
