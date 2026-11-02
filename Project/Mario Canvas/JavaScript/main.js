@@ -34,14 +34,19 @@ function reinitialiserDemo() {
     update();
 }
 
-// Écouteur de clic pour les boutons de fin
+// Écouteur de clic adapté au redimensionnement du Canvas
 canvas.addEventListener('click', (e) => {
     if (!demoTerminee) return;
 
-    // Calcul des coordonnées du clic relatives au canvas fixe
     const rect = canvas.getBoundingClientRect();
-    const clicX = e.clientX - rect.left;
-    const clicY = e.clientY - rect.top;
+    
+    // On calcule le ratio entre la taille logique (1024x576) et la taille physique réelle sur l'écran
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    // Application du ratio pour trouver la position exacte dans le repère de ton jeu
+    const clicX = (e.clientX - rect.left) * scaleX;
+    const clicY = (e.clientY - rect.top) * scaleY;
 
     // Clic sur Recommencer
     if (clicX >= boutonsFin.recommencer.x && clicX <= boutonsFin.recommencer.x + boutonsFin.recommencer.l &&
@@ -55,6 +60,7 @@ canvas.addEventListener('click', (e) => {
         window.location.href = "https://sylvain-g404.github.io/Mon-Portfolio-Temps/";
     }
 });
+
 
 function update() {
     // Si le score atteint 10, on bascule en mode fin de démo

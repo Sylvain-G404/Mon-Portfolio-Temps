@@ -1,30 +1,46 @@
-// --- ÉTAT DES TOUCHES (Indépendant de la disposition AZERTY/QWERTY) ---
+// --- ÉTAT DES TOUCHES ---
 const touches = {
-    haut: false,   // Touche W (QWERTY) ou Z (AZERTY)
-    gauche: false, // Touche A (QWERTY) ou Q (AZERTY)
-    bas: false,    // Touche S
-    droite: false  // Touche D
+    haut: false,   // Flèche Haut / Touch-up
+    gauche: false, // Flèche Gauche / Touch-left
+    bas: false,    // Flèche Bas / Touch-down
+    droite: false  // Flèche Droite / Touch-right
 };
 
 // ==========================================
-// 1. ÉCOUTEURS CLAVIER (PC)
+// 1. ÉCOUTEURS CLAVIER (PC - Flèches directionnelles)
 // ==========================================
 
 window.addEventListener('keydown', (e) => {
-    switch (e.code) {
-        case 'KeyW': touches.haut = true; break;
-        case 'KeyA': touches.gauche = true; break;
-        case 'KeyS': touches.bas = true; break;
-        case 'KeyD': touches.droite = true; break;
+    switch (e.key) {
+        case 'ArrowUp':
+            touches.haut = true;
+            break;
+        case 'ArrowLeft':
+            touches.gauche = true;
+            break;
+        case 'ArrowDown':
+            touches.bas = true;
+            break;
+        case 'ArrowRight':
+            touches.droite = true;
+            break;
     }
 });
 
 window.addEventListener('keyup', (e) => {
-    switch (e.code) {
-        case 'KeyW': touches.haut = false; break;
-        case 'KeyA': touches.gauche = false; break;
-        case 'KeyS': touches.bas = false; break;
-        case 'KeyD': touches.droite = false; break;
+    switch (e.key) {
+        case 'ArrowUp':
+            touches.haut = false;
+            break;
+        case 'ArrowLeft':
+            touches.gauche = false;
+            break;
+        case 'ArrowDown':
+            touches.bas = false;
+            break;
+        case 'ArrowRight':
+            touches.droite = false;
+            break;
     }
 });
 
@@ -39,7 +55,7 @@ function lierBoutonTactile(idElement, proprieteTouche) {
 
     // Quand on pose le doigt
     bouton.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Bloque le comportement natif du navigateur mobile
+        e.preventDefault(); // Bloque le comportement natif du navigateur mobile (zoom/scroll)
         touches[proprieteTouche] = true;
     });
 
@@ -56,7 +72,7 @@ function lierBoutonTactile(idElement, proprieteTouche) {
     });
 }
 
-// On applique la logique sur nos 4 boutons HTML
+// On applique la logique sur nos 4 boutons HTML une fois le DOM chargé
 document.addEventListener("DOMContentLoaded", () => {
     lierBoutonTactile('touch-left', 'gauche');
     lierBoutonTactile('touch-right', 'droite');

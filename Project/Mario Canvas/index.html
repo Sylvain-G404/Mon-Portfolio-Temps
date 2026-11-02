@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon du site -->
-    <link rel="shortcut icon" href="Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../Assets/Favicon/Favicon.K.sf.blanc.png" type="image/x-icon" />
     <!-- Lien vers ta signature secrète de développeur -->
-    <link rel="author" href="human.txt" />
+    <link rel="author" href="../../human.txt" />
 
     <link rel="stylesheet" href="Style/style.css" />
 
@@ -14,20 +14,31 @@
   </head>
 
   <body>
-    <canvas id="gameCanvas"></canvas>
-
-    <!-- Les boutons virtuels tactiles -->
-    <div id="mobile-controls">
-      <!-- Côté gauche : Pour se déplacer -->
-      <div class="control-group">
-        <div class="btn-touch" id="touch-left">◀</div>
-        <div class="btn-touch" id="touch-right">▶</div>
+    <!-- Message bloquant qui s'affichera uniquement si le téléphone est à la verticale -->
+    <div id="orientation-blocker">
+      <div class="blocker-content">
+        <div class="phone-icon">🔄</div>
+        <p>Veuillez incliner votre appareil en mode paysage pour jouer au Stickman !</p>
       </div>
+    </div>
 
-      <!-- Côté droit : Pour sauter et s'accroupir -->
-      <div class="control-group">
-        <div class="btn-touch" id="touch-down">▼</div>
-        <div class="btn-touch" id="touch-up">▲</div>
+    <div class="game-container">
+      <!-- Ton Canvas -->
+      <canvas id="gameCanvas"></canvas>
+
+      <!-- Les boutons virtuels tactiles -->
+      <div id="mobile-controls">
+        <!-- Côté gauche : Pour se déplacer -->
+        <div class="control-group">
+          <div class="btn-touch" id="touch-left">◀</div>
+          <div class="btn-touch" id="touch-right">▶</div>
+        </div>
+
+        <!-- Côté droit : Pour s'accroupir et sauter -->
+        <div class="control-group">
+          <div class="btn-touch" id="touch-down">▼</div>
+          <div class="btn-touch" id="touch-up">▲</div>
+        </div>
       </div>
     </div>
 
