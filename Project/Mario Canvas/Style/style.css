@@ -10,7 +10,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* Sécurité pour les vieux navigateurs */
+  height: 100dvh; /* S'ajuste dynamiquement quand la barre d'URL est présente */
   font-family: Arial, sans-serif;
 }
 
