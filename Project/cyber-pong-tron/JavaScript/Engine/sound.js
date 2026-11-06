@@ -4,15 +4,24 @@ let menuMusic = null;
 // Variable pour gérer l'intervalle du battement de cœur
 let heartInterval = null;
 
+// ==========================================
+// 🎛️ RÉGLAGE DU VOLUME DES EFFETS ET ALARMES
+// ==========================================
+const BEEP_VOLUME = 0.1;   // Volume des impacts et du compte à rebours (ex-0.1)
+const ALARM_VOLUME = 0.015;  // Volume de l'alarme battement de cœur (ex-0.1)
+
+
 // 1. Les bips d'impacts (Raquettes, Murs, Buts, Compte à rebours)
-export function playAdvancedBeep(frequency, duration, type = 'square') {
+export function playAdvancedBeep(frequency, duration, type = 'square', customVolume = BEEP_VOLUME) {
     if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
     oscillator.type = type;
     oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+    
+    // Application du volume choisi
+    gainNode.gain.setValueAtTime(customVolume, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.00001, audioContext.currentTime + duration);
 
     oscillator.connect(gainNode);
@@ -22,7 +31,7 @@ export function playAdvancedBeep(frequency, duration, type = 'square') {
 }
 
 export function playBeep(frequency, duration) {
-    playAdvancedBeep(frequency, duration, 'square');
+    playAdvancedBeep(frequency, duration, 'square', BEEP_VOLUME);
 }
 
 // 2. L'alarme "BATTEMENT DE CŒUR" DYNAMIQUE
@@ -40,7 +49,8 @@ export function startDangerAlarm(type) {
     }
 
     heartInterval = setInterval(() => {
-        playAdvancedBeep(frequency, 0.15, 'sawtooth');
+        // On passe ALARM_VOLUME ici pour contrôler la puissance du battement
+        playAdvancedBeep(frequency, 0.15, 'sawtooth', ALARM_VOLUME);
     }, intervalTime);
 }
 

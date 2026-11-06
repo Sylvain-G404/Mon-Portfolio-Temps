@@ -25,7 +25,6 @@ export class MenuState {
     }
 
     handleKeyDown(event) {
-        startMenuMusic();
         switch (event.key) {
             case 'ArrowUp':
             case 'z':
@@ -103,6 +102,32 @@ export class MenuState {
                 ctx.fillText(option, canvas.width / 2, startY + (index * spacing));
             }
         });
-    }
 
+        // ==========================================
+        // HUD DISCRET : GUIDE DES COMMANDES (TUTO) ACCORDE AU DESIGN AAA
+        // ==========================================
+        ctx.save();
+
+        // Calcul de la taille de police proportionnelle (2.5% de la hauteur)
+        const helpSize = Math.floor(ctx.canvas.height * 0.025); 
+        ctx.font = helpSize + "px 'Courier New', Courier, monospace";
+        ctx.textAlign = "center";
+
+        // Couleur cyan néon avec opacité réduite (0.4) pour rester très discret
+        ctx.fillStyle = "rgba(0, 243, 255, 0.4)";
+
+        // Positionnement dynamique centré et calé tout en bas (à 90% de la hauteur)
+        const hudX = ctx.canvas.width / 2; 
+        const hudY = ctx.canvas.height * 0.90; 
+
+        // Dessin du texte de contrôle
+        ctx.fillText(
+            "[ Navigation ]  Haut : Z / ⬆  |  Bas : S / ⬇  |  Validation : Entrée / Espace", 
+            hudX, 
+            hudY
+        );
+
+        ctx.restore();
+
+    }
 }

@@ -1,34 +1,34 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #05050a; /* Un noir bleuté très sombre style Cyberpunk */
-  color: #ffffff;
-  font-family: "Courier New", Courier, monospace; /* Style rétro-informatique */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden; /* Empêche les barres de défilement */
+    margin: 0;
+    padding: 0;
+    background-color: #05050a; /* Un noir bleuté très sombre style Cyberpunk */
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace; /* Style rétro-informatique */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Empêche les barres de défilement */
 }
 
 #gameCanvas {
-  background-color: #000000;
-  border: 3px solid #00f0ff;
-  box-shadow: 0 0 15px #00f0ff, inset 0 0 15px #00f0ff;
-  display: block;
+    background-color: #000000;
+    border: 3px solid #00f0ff;
+    box-shadow: 0 0 15px #00f0ff, inset 0 0 15px #00f0ff;
+    display: block;
 
-  /* --- LES DEUX LIGNES MAGIQUES AAA --- */
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto; /* Centre automatiquement le canvas s'il y a des bandes noires */
+    /* --- LES DEUX LIGNES MAGIQUES AAA --- */
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto; /* Centre automatiquement le canvas s'il y a des bandes noires */
 
-  /* Force le navigateur à agrandir l'image de manière nette (Pixel-Perfect) */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
+    /* Force le navigateur à agrandir l'image de manière nette (Pixel-Perfect) */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 /* 1. Par défaut, l'écran de verrouillage est totalement masqué */

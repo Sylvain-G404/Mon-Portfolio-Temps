@@ -6,7 +6,7 @@ export class OptionsState {
         this.input = input;
 
         // Configuration des choix de difficulté
-        this.difficulties = ['Facile', 'Moyen', 'Difficile'];
+        this.difficulties = ['Facile', 'Moyen', 'Difficile', 'Hardcore'];
         this.selectedIndex = 1; // Positionné sur 'Moyen' par défaut
 
         this.handleKeyDown = this.handleKeyDown.bind(this);

@@ -2,8 +2,8 @@ export class CountdownView {
     constructor(canvasWidth, canvasHeight, difficulty) {
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
-        this.difficulty = difficulty || 'Moyen';
-        
+        this.difficulty = difficulty || 'Facile';
+
         // Notre chrono interne de 5 secondes
         this.timer = 5.0;
         this.isFinished = false;
@@ -40,15 +40,18 @@ export class CountdownView {
         // PHASE 1 : ANNONCE DU MODE (De 5.0s à 3.0s)
         // ==========================================
         if (this.timer > 3.0) {
-            const isHardcore = this.difficulty.toLowerCase() === 'difficile';
+            const currentDiffLower = (this.difficulty || '').toLowerCase();
+            const isHard = currentDiffLower === 'difficile';
+            const isHardcore = currentDiffLower === 'hardcore';
 
+            // Clignotement de la boîte : identique pour le difficile et le hardcore
             let isFlashOn = true;
-            if (isHardcore) {
+            if (isHard || isHardcore) {
                 isFlashOn = Math.floor(this.timer * 5) % 2 === 0;
             }
 
             let neonColor = '#00f3ff'; 
-            if (isHardcore && isFlashOn) {
+            if ((isHard || isHardcore) && isFlashOn) {
                 neonColor = '#ff0033'; 
             }
 
@@ -58,35 +61,92 @@ export class CountdownView {
             ctx.shadowBlur = 15;
             ctx.shadowColor = neonColor;
 
-            // On remplace 'centerY' par notre nouveau 'hudY' surélevé !
+            // Dessin de l'encadré principal (Inchangé)
             ctx.strokeRect(centerX - boxWidth / 2, hudY - boxHeight / 2, boxWidth, boxHeight);
+            ctx.restore();
+
+            // --- RE-DESSIN ET DOUBLAGE DES CORNERS D'ANGLE ---
+            ctx.save();
+            ctx.strokeStyle = '#ff0033'; // Toujours clignotant en rouge pur
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#ff0033';
 
             const cornerSize = 15;
-            ctx.beginPath();
-            ctx.moveTo(centerX - boxWidth / 2 - 10, hudY - boxHeight / 2 + cornerSize);
-            ctx.lineTo(centerX - boxWidth / 2 - 10, hudY - boxHeight / 2 - 10);
-            ctx.lineTo(centerX - boxWidth / 2 + cornerSize, hudY - boxHeight / 2 - 10);
-            ctx.stroke();
 
-            ctx.beginPath();
-            ctx.moveTo(centerX + boxWidth / 2 + 10, hudY - boxHeight / 2 + cornerSize);
-            ctx.lineTo(centerX + boxWidth / 2 + 10, hudY - boxHeight / 2 - 10);
-            ctx.lineTo(centerX + boxWidth / 2 - cornerSize, hudY - boxHeight / 2 - 10);
-            ctx.stroke();
+            // Fonction locale pour tracer les crochets selon un décalage (offset)
+            const drawCorners = (offset) => {
+                // Haut-Gauche
+                ctx.beginPath();
+                ctx.moveTo(centerX - boxWidth / 2 - offset, hudY - boxHeight / 2 - offset + cornerSize);
+                ctx.lineTo(centerX - boxWidth / 2 - offset, hudY - boxHeight / 2 - offset);
+                ctx.lineTo(centerX - boxWidth / 2 - offset + cornerSize, hudY - boxHeight / 2 - offset);
+                ctx.stroke();
+
+                // Haut-Droite
+                ctx.beginPath();
+                ctx.moveTo(centerX + boxWidth / 2 + offset, hudY - boxHeight / 2 - offset + cornerSize);
+                ctx.lineTo(centerX + boxWidth / 2 + offset, hudY - boxHeight / 2 - offset);
+                ctx.lineTo(centerX + boxWidth / 2 + offset - cornerSize, hudY - boxHeight / 2 - offset);
+                ctx.stroke();
+            };
+
+            // 1. Première couche de crochets du haut (Présente en Difficile ET Hardcore, décalée de 10px)
+            if (isHard || isHardcore) {
+                drawCorners(10);
+            }
+
+            // 2. EFFET EXCLUSIF AU MODE HARDCORE
+            if (isHardcore) {
+                // Effet de battement fluide (Pulsation de taille de 18px à 26px qui tourne en boucle)
+                const pulseOffset = 22 + Math.sin(Date.now() * 0.008) * 4;
+
+                // On trace la deuxième couche de crochets (Double crochet) avec l'effet de battement
+                drawCorners(pulseOffset);
+
+                // On rajoute également les petits crochets en BAS pour le style Hardcore complet !
+                ctx.beginPath();
+                ctx.moveTo(centerX - boxWidth / 2 - 10, hudY + boxHeight / 2 + 10 - cornerSize);
+                ctx.lineTo(centerX - boxWidth / 2 - 10, hudY + boxHeight / 2 + 10);
+                ctx.lineTo(centerX - boxWidth / 2 - 10 + cornerSize, hudY + boxHeight / 2 + 10);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(centerX + boxWidth / 2 + 10, hudY + boxHeight / 2 + 10 - cornerSize);
+                ctx.lineTo(centerX + boxWidth / 2 + 10, hudY + boxHeight / 2 + 10);
+                ctx.lineTo(centerX + boxWidth / 2 + 10 - cornerSize, hudY + boxHeight / 2 + 10);
+                ctx.stroke();
+
+                // Double crochet du bas qui bat lui aussi la mesure !
+                ctx.beginPath();
+                ctx.moveTo(centerX - boxWidth / 2 - pulseOffset, hudY + boxHeight / 2 + pulseOffset - cornerSize);
+                ctx.lineTo(centerX - boxWidth / 2 - pulseOffset, hudY + boxHeight / 2 + pulseOffset);
+                ctx.lineTo(centerX - boxWidth / 2 - pulseOffset + cornerSize, hudY + boxHeight / 2 + pulseOffset);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(centerX + boxWidth / 2 + pulseOffset, hudY + boxHeight / 2 + pulseOffset - cornerSize);
+                ctx.lineTo(centerX + boxWidth / 2 + pulseOffset, hudY + boxHeight / 2 + pulseOffset);
+                ctx.lineTo(centerX + boxWidth / 2 + pulseOffset - cornerSize, hudY + boxHeight / 2 + pulseOffset);
+                ctx.stroke();
+            }
+
             ctx.restore(); 
 
+            // --- RENDU DES TEXTES ET TITRES ---
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
             ctx.fillStyle = '#558899';
             ctx.font = `bold ${Math.floor(this.canvasHeight * 0.022)}px 'Courier New', Courier, monospace`;
-            ctx.fillText(">> CHARGEMENT FLUX <<", centerX, hudY - 20); // Utilise hudY
+            ctx.fillText(">> CHARGEMENT FLUX <<", centerX, hudY - 20);
 
-            ctx.fillStyle = isHardcore ? '#ff0033' : '#ffffff';
+            const isWarningText = isHard || isHardcore;
+            ctx.fillStyle = isWarningText ? '#ff0033' : '#ffffff';
             ctx.font = `bold italic ${Math.floor(this.canvasHeight * 0.035)}px 'Courier New', Courier, monospace`;
-            
-            const txtMode = isHardcore ? `MODE: ${this.difficulty.toUpperCase()}` : `MODE: ${this.difficulty}`;
-            ctx.fillText(txtMode, centerX, hudY + 20); // Utilise hudY
+
+            const txtMode = isWarningText ? `MODE: ${this.difficulty.toUpperCase()}` : `MODE: ${this.difficulty}`;
+            ctx.fillText(txtMode, centerX, hudY + 20);
         }
 
         // ==========================================
@@ -107,7 +167,7 @@ export class CountdownView {
             ctx.lineWidth = 4;
             ctx.shadowBlur = 20;
             ctx.shadowColor = '#ff6600';
-            
+
             const radius = Math.floor(this.canvasHeight * 0.08) * scaleFactor;
 
             ctx.beginPath();
@@ -127,7 +187,7 @@ export class CountdownView {
             ctx.shadowColor = '#ffffff';
             ctx.font = `bold ${dynamicFontSize}px 'Courier New', Courier, monospace`;
             ctx.fillText(currentSecond, centerX, hudY); // Affiché sur hudY
-            
+
             ctx.restore();
         }
 
@@ -136,7 +196,7 @@ export class CountdownView {
         // ==========================================
         else {
             const alpha = 1.0 - (Math.abs(this.timer) / 0.5); 
-            
+
             ctx.save();
             ctx.globalAlpha = Math.max(0, alpha);
             ctx.textAlign = 'center';
@@ -146,7 +206,7 @@ export class CountdownView {
             ctx.font = `bold italic ${Math.floor(this.canvasHeight * 0.1)}px 'Courier New', Courier, monospace`;
             ctx.shadowBlur = 30;
             ctx.shadowColor = '#00ff66';
-            
+
             // Le FIGHT reste plein centre (centerY) car c'est le signal d'action global !
             ctx.fillText("FIGHT !", centerX, centerY); 
             ctx.restore();

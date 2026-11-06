@@ -8,7 +8,7 @@ export class StateManager {
         this.states = {};       // Stocke tous nos écrans (Menu, Jeu, Game Over)
         this.currentState = null; // L'écran actuellement affiché
 
-        this.currentDifficulty = 'Moyen'; // Difficulté de base du jeu
+        this.currentDifficulty = 'Facile'; // Difficulté de base du jeu
     }
 
     // Enregistre un nouvel écran dans le gestionnaire
@@ -29,7 +29,7 @@ export class StateManager {
         }
 
         this.currentState = this.states[name];
-        
+
         // On initialise le nouvel écran
         if (this.currentState && this.currentState.enter) {
             this.currentState.enter();

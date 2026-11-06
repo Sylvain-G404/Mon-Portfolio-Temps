@@ -13,5 +13,11 @@
     "speed": 550,
     "reactionTime": 0.08,
     "errorMargin": 15
+  },
+  "hardcore": {
+    "speed": 680,
+    "reactionTime": 0.0,
+    "errorMargin": 0,
+    "malice": true
   }
 }
