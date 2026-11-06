@@ -3,8 +3,9 @@
 # ==========================================
 
 # --- Vos scripts et outils locaux ---
-**/generate_structure.bat
-**/Infos
+**/generate_structure_V2.bat
+**/Infos_Structure
+**/generate_Depot_GitHub_Links_V2.bat
 
 # --- Rust & Compilation (Tauri / Cargo) ---
 **/src-tauri/target/
