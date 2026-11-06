@@ -25,6 +25,7 @@ export class MenuState {
     }
 
     handleKeyDown(event) {
+        startMenuMusic();
         switch (event.key) {
             case 'ArrowUp':
             case 'z':
