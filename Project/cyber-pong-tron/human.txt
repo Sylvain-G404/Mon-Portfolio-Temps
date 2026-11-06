@@ -1,0 +1,12 @@
+/* DEVELOPER */
+Freelance   : Ki->ir->rA
+GitHub      : https://github.com/Sylvain-G404
+Portfolio   : https://sylvain-g404.github.io/Mon-Portfolio-Temps/
+
+/* REMERCIEMENTS */
+Co-Pilote : Ton IA de confiance 😉
+
+/* TECHNOLOGIES */
+Standards : HTML5 (Canvas 2D), CSS3, JavaScript (Modules ES6), JSON
+Logiciel  : VS Code
+Moteur    : Propulsé par la Grille Cyber-Arcade (Édition Tron 2026.10)

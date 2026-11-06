@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #05050a; /* Un noir bleuté très sombre style Cyberpunk */
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace; /* Style rétro-informatique */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Empêche les barres de défilement */
+}
+
+#gameCanvas {
+  background-color: #000000;
+  border: 3px solid #00f0ff;
+  box-shadow: 0 0 15px #00f0ff, inset 0 0 15px #00f0ff;
+  display: block;
+
+  /* --- LES DEUX LIGNES MAGIQUES AAA --- */
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto; /* Centre automatiquement le canvas s'il y a des bandes noires */
+
+  /* Force le navigateur à agrandir l'image de manière nette (Pixel-Perfect) */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 1. Par défaut, l'écran de verrouillage est totalement masqué */
+#rotate-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050510; /* Un bleu nuit très sombre style Tron */
+    color: #ffffff;
+    z-index: 9999; /* Par-dessus le canvas et tout le reste */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Style de l'icône qui tourne */
+.rotate-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    animation: spin 3s linear infinite;
+    text-shadow: 0 0 15px #00f3ff;
+}
+
+#rotate-screen p {
+    font-size: 20px;
+    color: #00f3ff;
+    text-shadow: 0 0 10px #00f3ff;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* Petite animation pour faire tourner le logo */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* 2. LA MAGIE CSS : Si l'écran est un mobile/tablette ET qu'il est en mode PORTRAIT (Vertical) */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    #rotate-screen {
+        display: flex; /* On affiche l'overlay instantanément ! */
+    }
+}

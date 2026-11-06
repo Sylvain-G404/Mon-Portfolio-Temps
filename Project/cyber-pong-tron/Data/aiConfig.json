@@ -1,0 +1,17 @@
+{
+  "facile": {
+    "speed": 300,
+    "reactionTime": 0.25,
+    "errorMargin": 60
+  },
+  "moyen": {
+    "speed": 400,
+    "reactionTime": 0.15,
+    "errorMargin": 40
+  },
+  "difficile": {
+    "speed": 550,
+    "reactionTime": 0.08,
+    "errorMargin": 15
+  }
+}
