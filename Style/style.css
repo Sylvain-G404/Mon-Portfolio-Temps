@@ -71,7 +71,7 @@ p, h1, .titre-plume {
 .contenu {
     position: relative;
     z-index: 1;
-    width: min(800px, 80%);
+    width: min(1200px, 90%);
     margin: 0 auto;
     min-height: 100vh; 
     display: flex;
@@ -102,19 +102,32 @@ p, h1, .titre-plume {
     font-style: normal;
     letter-spacing: 1px;
     color: inherit;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-
+.titre-plume:hover{
+    transform: scale(1.1);
+    text-shadow: 5px 5px rgb(210, 100, 27),
+}
 .paragraphe {
-    max-width: 700px;
-    margin: 30px auto;
-    padding: 20px 25px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 25px 35px;
     font-size: 1.1rem;
     line-height: 1.7;
     text-align: center;
-    color: inherit;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08); 
+    border: 2px solid rgba(255, 159, 28, 0.3); 
+    border-radius: 30px; 
+}
+
+/* L'effet lourd ne se déclenche que sur le projet actif / survolé */
+.paragraphe:hover,.image-projet:hover {
+    transform: scale(1.08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.Bloc {
+    margin: 0;
+    padding: 0px 10px;
 }
 
 /* ==========================================================================
@@ -122,18 +135,14 @@ p, h1, .titre-plume {
    ========================================================================== */
 .image-projet {
     display: block;
-    width: min(700px, 90%);
+    width: 100%;             /* Force l'image à occuper l'espace disponible */
+    max-width: 900px;
     height: auto;
     margin: 30px auto;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.image-projet:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Séparateur horizontal style "Nuage brumeux compact" (Bords fondus) */
@@ -173,7 +182,7 @@ hr {
 
 @media (max-width: 600px) {
     .paragraphe {
-        font-size: 1rem !important;
+        font-size: 0.8rem !important;
     }
 
     .titre-plume {
