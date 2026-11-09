@@ -1,5 +1,7 @@
 let audioContext = null;
 let menuMusic = null;
+let gameMusic = null; // 🎵 Ajout pour la musique de jeu
+let endSound = null;  // 🔊 Ajout pour le son de victoire/défaite
 
 // Variable pour gérer l'intervalle du battement de cœur
 let heartInterval = null;
@@ -7,9 +9,8 @@ let heartInterval = null;
 // ==========================================
 // 🎛️ RÉGLAGE DU VOLUME DES EFFETS ET ALARMES
 // ==========================================
-const BEEP_VOLUME = 0.1;   // Volume des impacts et du compte à rebours (ex-0.1)
-const ALARM_VOLUME = 0.015;  // Volume de l'alarme battement de cœur (ex-0.1)
-
+const BEEP_VOLUME = 0.1;   // Volume des impacts et du compte à rebours
+const ALARM_VOLUME = 0.015;  // Volume de l'alarme battement de cœur
 
 // 1. Les bips d'impacts (Raquettes, Murs, Buts, Compte à rebours)
 export function playAdvancedBeep(frequency, duration, type = 'square', customVolume = BEEP_VOLUME) {
@@ -19,8 +20,7 @@ export function playAdvancedBeep(frequency, duration, type = 'square', customVol
 
     oscillator.type = type;
     oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    
-    // Application du volume choisi
+
     gainNode.gain.setValueAtTime(customVolume, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.00001, audioContext.currentTime + duration);
 
@@ -38,18 +38,15 @@ export function playBeep(frequency, duration) {
 export function startDangerAlarm(type) {
     if (heartInterval) return;
 
-    // Par défaut : rythme de l'IA (lent = 600ms)
     let intervalTime = 600; 
     let frequency = 80;
 
-    // Si c'est le joueur qui est en danger, on passe en mode panique (rapide = 250ms)
     if (type === 'joueur') {
         intervalTime = 250;
-        frequency = 110; // Fréquence légèrement plus haute pour la panique
+        frequency = 110; 
     }
 
     heartInterval = setInterval(() => {
-        // On passe ALARM_VOLUME ici pour contrôler la puissance du battement
         playAdvancedBeep(frequency, 0.15, 'sawtooth', ALARM_VOLUME);
     }, intervalTime);
 }
@@ -61,31 +58,73 @@ export function stopDangerAlarm() {
     }
 }
 
-// 3. Arrêt total
-export function stopAmbientMusic() {
-    stopDangerAlarm();
-}
+// ==========================================
+// 🎶 GESTION DES MUSIQUES ET ÉVÉNEMENTS (MP3)
+// ==========================================
 
-// 4. Musique du Menu Principal
+// Musique du Menu Principal
 export function startMenuMusic() {
-    // Si la musique n'est pas encore créée, on l'instancie
     if (!menuMusic) {
         menuMusic = new Audio('Assets/Son/menu_theme.mp3');
-        menuMusic.loop = true; // Permet de rejouer la musique en boucle
-        menuMusic.volume = 0.05; // Volume à 5% pour ne pas exploser les oreilles du joueur
+        menuMusic.loop = true;
+        menuMusic.volume = 0.05;
     }
-    
-    // On la lance uniquement si elle est en pause
     if (menuMusic.paused) {
-        menuMusic.play().catch(error => {
-            console.log("Lecture audio bloquée par le navigateur. Attend une interaction joueur.", error);
-        });
+        menuMusic.play().catch(err => console.log("Audio bloqué : attend une interaction.", err));
     }
 }
 
 export function stopMenuMusic() {
     if (menuMusic) {
         menuMusic.pause();
-        menuMusic.currentTime = 0; // On remet la musique au début
+        menuMusic.currentTime = 0;
     }
+}
+
+// Musique de la partie (game_theme.mp3)
+export function startGameMusic() {
+    if (!gameMusic) {
+        gameMusic = new Audio('Assets/Son/game_theme.mp3');
+        gameMusic.loop = true;
+        gameMusic.volume = 0.05; // Ajuste selon tes préférences
+    }
+    if (gameMusic.paused) {
+        gameMusic.play().catch(err => console.log("Audio de jeu bloqué.", err));
+    }
+}
+
+export function stopGameMusic() {
+    if (gameMusic) {
+        gameMusic.pause();
+        gameMusic.currentTime = 0;
+    }
+}
+
+// Sons de fin de partie (Victoire / Défaite selon la difficulté)
+// 'victory' ou 'defeat' | 'eazy', 'hard', 'hardcore'
+export function playEndSound(status, difficulty) {
+    // On arrête d'abord un éventuel son de fin déjà en cours
+    stopEndSound(); 
+    
+    const filePath = `Assets/Son/${status}_${difficulty}.mp3`;
+    endSound = new Audio(filePath);
+    endSound.volume = 0.1;
+    
+    endSound.play().catch(err => console.log("Erreur lecture son de fin.", err));
+}
+
+export function stopEndSound() {
+    if (endSound) {
+        endSound.pause();
+        endSound.currentTime = 0;
+        endSound = null;
+    }
+}
+
+// 3. Arrêt total révisé pour tout nettoyer d'un coup
+export function stopAmbientMusic() {
+    stopDangerAlarm();
+    stopMenuMusic();
+    stopGameMusic();
+    stopEndSound();
 }

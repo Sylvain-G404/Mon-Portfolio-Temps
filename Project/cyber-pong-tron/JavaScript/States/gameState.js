@@ -4,7 +4,7 @@ import { Board } from '../Entities/board.js';
 import { Paddle } from '../Entities/paddle.js';
 import { Ball } from '../Entities/ball.js';
 import { CountdownView } from '../Entities/countdownView.js';
-import { playBeep, playAdvancedBeep, startDangerAlarm, stopDangerAlarm, stopAmbientMusic, stopMenuMusic } from '../Engine/sound.js';
+import { playBeep, playAdvancedBeep, startDangerAlarm, stopDangerAlarm, stopAmbientMusic, stopMenuMusic, startGameMusic } from '../Engine/sound.js';
 
 export class GameState {
     constructor(stateManager, input) {
@@ -29,6 +29,7 @@ export class GameState {
     async enter() {
         console.log("Le match commence !");
         stopMenuMusic();
+        startGameMusic();
         const canvas = this.stateManager.canvas;
 
         this.wallDangerJoueur = false;

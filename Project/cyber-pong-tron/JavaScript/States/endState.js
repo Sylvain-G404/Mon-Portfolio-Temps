@@ -1,5 +1,5 @@
-import { playAdvancedBeep, stopAmbientMusic  } from '../Engine/sound.js';
-import { playBeep } from '../Engine/sound.js'; // Pour le bruit des touches
+import { playBeep, stopAmbientMusic } from '../Engine/sound.js'; // Suppression des anciens imports de bips
+import { playEndSound } from '../Engine/sound.js'; // 🔊 Import de la gestion des MP3
 
 export class EndState {
     constructor(stateManager, input) {
@@ -23,20 +23,30 @@ export class EndState {
         stopAmbientMusic(); // Sécurité supplémentaire
         this.selectedIndex = 0; // On remet toujours le curseur sur Rejouer par défaut
 
+        // 🟢 AJOUTE CES DEUX LIGNES DE LOG ICI POUR VÉRIFIER :
+        console.log("Difficulté actuelle dans le manager :", this.stateManager.currentDifficulty);
+        console.log("Résultat du match :", this.result);
+
         // On écoute les touches de manière événementielle pour le menu
         window.addEventListener('keydown', this.handleKeyDown);
 
-        // --- SONS DE FIN DE PARTIE ---
-        if (this.result === 'victory') {
-            playAdvancedBeep(440, 0.1, 'square');
-            setTimeout(() => playAdvancedBeep(554, 0.1, 'square'), 100);
-            setTimeout(() => playAdvancedBeep(659, 0.15, 'square'), 200);
-            setTimeout(() => playAdvancedBeep(880, 0.3, 'sawtooth'), 300);
-        } else {
-            playAdvancedBeep(150, 0.15, 'sawtooth');
-            setTimeout(() => playAdvancedBeep(110, 0.15, 'sawtooth'), 120);
-            setTimeout(() => playAdvancedBeep(85, 0.4, 'sawtooth'), 240);
+        const soundStatus = this.result === 'victory' ? 'victory' : 'defeat';
+
+        // --- SONS DE FIN DE PARTIE CYBERPUNK (MP3 COHÉRENTS) ---
+        // Conversion du nom de la difficulté pour correspondre à tes fichiers (eazy, hard, hardcore)
+        let diffName = (this.stateManager.currentDifficulty || 'Facile').toLowerCase();
+        if (diffName === 'facile') diffName = 'eazy'; // Correction pour correspondre à "defeat_eazy.mp3"
+        if (diffName === 'difficile') diffName = 'hard';
+
+        if (diffName === 'facile' || diffName === 'moyen') {
+            diffName = 'eazy'; // On utilise les sons "eazy" pour Facile ET Moyen
+        } else if (diffName === 'difficile') {
+            diffName = 'hard';
+        } else if (diffName === 'hardcore') {
+            diffName = 'hardcore';
         }
+
+        playEndSound(soundStatus, diffName);
     }
 
     handleKeyDown(event) {
@@ -129,7 +139,6 @@ export class EndState {
     }
 
     exit() {
-        // TRÈS IMPORTANT : On décroche l'écouteur d'événements pour éviter les conflits d'inputs sur les autres écrans
         window.removeEventListener('keydown', this.handleKeyDown);
         console.log("Fermeture de l'écran de fin");
     }
