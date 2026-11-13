@@ -125,11 +125,6 @@ p, h1, .titre-plume {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.Bloc {
-    margin: 0;
-    padding: 0px 10px;
-}
-
 /* ==========================================================================
    4. ÉLÉMENTS DE LIENS & COMPOSANTS
    ========================================================================== */
@@ -190,7 +185,7 @@ hr {
     }
 
     .lien-projet {
-        font-size: 1rem ;
+        font-size: 0.8rem;
     }
 
     .image-projet {
