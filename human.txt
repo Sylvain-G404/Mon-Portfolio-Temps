@@ -3,9 +3,8 @@ Freelance: Ki->ir->rA
 GitHub: https://github.com/Sylvain-G404
 Portfolio: https://sylvain-g404.github.io/Mon-Portfolio-Temps/
 
-/* SITE */
-Standards: HTML5, CSS3, JavaScript
+/* OUTILS */
 Software: Vs Code
+Standards: HTML5, CSS3, JavaScript, Canvas, Supabase, MySQL etc...
 
-/* ENGINE */
-Generated-By: PortFolio  (V22/10/2026)
+PORTFOLIO (V13/11/2026)

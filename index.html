@@ -79,59 +79,27 @@
       <h2 class="titre-plume" id="collatz">Cyber-Pong-Tron</h2>
       <hr />
 
-      <section class="Bloc">
-        <p class="paragraphe">
-          <strong>Concept & Révolution d'Arcade</strong><br />
-          Cyber Pong Tron réinvente le grand classique de l'arcade en brisant ses mécaniques historiques. Contrairement au Pong traditionnel
-          où la balle s'échappe, l'arène est ici entièrement verrouillée en boucle continue. Le jeu intègre un système de tension
-          exponentielle avec une accélération de la comète à chaque impact, combinée à un mécanisme de "Murs de Danger" néon faisant office
-          de tie-break visuel.
-        </p>
-        <p class="paragraphe">
-          <strong>Apprentissages Clés : L'Architecture Modulaire "AAA"</strong><br />
-          Ce projet marque une étape majeure dans ma maîtrise de la conception logicielle. Pour éviter le piège du code "plat" et illisible,
-          j'ai structuré le moteur de jeu en adoptant les Design Patterns du jeu vidéo professionnel (conception découplée inspirée des
-          standards AAA) :
-        </p>
-        <ul class="paragraphe" style="list-style-type: square; padding-left: 20px">
-          <li>
-            <strong>Le Moteur (Engine) :</strong> Implémentation d'une boucle de rendu (Game Loop) synchrone basée sur le DeltaTime afin de
-            garantir une vitesse de jeu immuable à 60 FPS, peu importe la puissance de la machine.
-          </li>
-          <li>
-            <strong>La Machine à États (States) :</strong> Création d'un State Manager centralisé faisant office d'aiguilleur étanche entre
-            l'écran titre, le panneau de configuration, le match en cours et l'écran de fin.
-          </li>
-          <li>
-            <strong>Les Entités isolées (Entities) :</strong> Découpage strict des composants physiques (Arène, Raquettes, Comète) où chaque
-            module est responsable de son propre rendu graphique (Canvas 2D) et de sa logique interne.
-          </li>
-          <li>
-            <strong>Optimisation Mobile (En cours) :</strong> Adaptation des commandes tactiles et recalibrage de l'affichage responsive en
-            préparation pour une expérience fluide sur smartphone.
-          </li>
-        </ul>
-        <p class="paragraphe">
-          <strong>Le "+" Technique : Physique & Résolution Logique</strong><br />
-          J'ai développé un moteur physique dynamique liant les vecteurs cinétiques via Pythagore pour maintenir l'énergie globale de la
-          balle constante, tout en implémentant une physique d'impact à 3 zones (bords de raquette critiques). Enfin, l'intégralité des
-          calculs s'exécute dans une arène virtuelle fixe (1600x1000 pixels), projetée de manière responsive et équitable sur tous les
-          écrans (PC 4K ou Mobile Landscape) sans altérer le gameplay.
-        </p>
-      </section>
+      <p class="paragraphe">
+        <strong>Cyber Pong Tron</strong> réinvente l'arcade classique avec une arène verrouillée en flux continu, intégrant une accélération
+        exponentielle et des « Murs de Danger » néon comme tie-break visuel. Développé en JavaScript Vanilla (Canvas 2D), ce projet repose
+        sur une <strong>architecture logicielle modulaire</strong> inspirée des standards professionnels : un moteur rythmé par le
+        <em>DeltaTime</em> (60 FPS constants), une machine à états centralisée et des entités graphiques strictement isolées. Côté
+        technique, j'ai conçu un moteur physique vectoriel avec rebonds à 3 zones d'impact, le tout calculé dans une
+        <strong>résolution logique fixe (1600×1000 px)</strong> pour garantir un gameplay fluide et équitable sur tous les écrans.
+      </p>
 
       <input type="checkbox" id="image-cyber-pong-tron" class="image-toggle" />
 
       <label for="image-cyber-pong-tron">
         <img
           class="image-projet"
-          src="Project/cyber-pong-tron/Screen_Site/Screenshot 2026-11-05 at 01-40-02 cyber-pong-tron_V2_HUD.png"
+          src="https://sylvain-g404.github.io/cyber-pong-tron/Screen_Site/Screenshot%202026-11-05%20at%2001-40-02%20cyber-pong-tron_V2_HUD.png"
           alt="Capture d'écran Cyber-Pong-Tron-HUD"
         />
       </label>
 
       <div style="text-align: center; gap: 15px; display: flex; justify-content: center">
-        <a class="lien-projet" href="Project/cyber-pong-tron/index.html" target="_blank"> Tester le jeu V2 </a>
+        <a class="lien-projet" href="https://sylvain-g404.github.io/cyber-pong-tron/" target="_blank"> Tester le jeu V2 </a>
         <a class="lien-projet" href="https://ki-ir-ra.itch.io/cyber-pong-tron" style="background-color: #238636" target="_blank"
           >Voir le projet sur itch.io</a
         >
@@ -232,23 +200,13 @@
       <label for="image-MemoRyGame_1">
         <img
           class="image-projet"
-          src="Project/MemoRyGame/Screen_Site/Screenshot 2026-10-26 at 06-36-07 MemoRyGame.png"
-          alt="Capture d'écran MemoRyGame_1"
-        />
-      </label>
-
-      <input type="checkbox" id="image-MemoRyGame_2" class="image-toggle" />
-
-      <label for="image-MemoRyGame_2">
-        <img
-          class="image-projet"
-          src="Project/MemoRyGame/Screen_Site/Screenshot 2026-10-26 at 06-31-45 MemoRyGame.png"
-          alt="Capture d'écran MemoRyGame_2"
+          src="https://sylvain-g404.github.io/MemoRyGame/Screen_Site/5.1.Memory_In-Game_Normal.png"
+          alt="Capture d'écran MemoRyGame In-Game"
         />
       </label>
 
       <div style="text-align: center; gap: 15px; display: flex; justify-content: center">
-        <a class="lien-projet" href="./Project/MemoRyGame/index.html"> Voir la page </a>
+        <a class="lien-projet" href="https://sylvain-g404.github.io/MemoRyGame/" target="_blank"> Voir la page </a>
         <a class="lien-projet" href="https://ki-ir-ra.itch.io/memorygame" style="background-color: #238636" target="_blank"
           >Voir le projet sur itch.io</a
         >
